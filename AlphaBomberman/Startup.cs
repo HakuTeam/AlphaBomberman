@@ -1,4 +1,4 @@
-﻿namespace AphaBomberman
+﻿namespace AlphaBomberman
 {
     class Startup
     {
