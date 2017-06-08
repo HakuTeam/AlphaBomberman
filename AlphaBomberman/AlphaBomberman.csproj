@@ -54,6 +54,10 @@
       <Project>{aec0d57e-9f6f-4ed9-b19f-2a40c3a61991}</Project>
       <Name>AlphaBomberman.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AlphaBomberman.Utilities\AlphaBomberman.Utilities.csproj">
+      <Project>{226cc90e-4d02-4409-84bb-cab59c23b89f}</Project>
+      <Name>AlphaBomberman.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

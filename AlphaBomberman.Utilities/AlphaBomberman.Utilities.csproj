@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AEC0D57E-9F6F-4ED9-B19F-2A40C3A61991}</ProjectGuid>
+    <ProjectGuid>{226CC90E-4D02-4409-84BB-CAB59C23B89F}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AlphaBomberman.Models</RootNamespace>
-    <AssemblyName>AlphaBomberman.Models</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AlphaBomberman.Utilities</RootNamespace>
+    <AssemblyName>AlphaBomberman.Utilities</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,16 +22,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,19 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mobs.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Composer\Composer.cs" />
+    <Compile Include="Composer\ComposerChars.cs" />
+    <Compile Include="Ennumetation\Command.cs" />
+    <Compile Include="Input\KeyboardInput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenElementsComposite\Alert.cs" />
+    <Compile Include="ScreenElementsComposite\Menu.cs" />
+    <Compile Include="ScreenElementsComposite\ScreenDecoration.cs" />
+    <Compile Include="ScreenElementsComposite\ScreenGroup.cs" />
+    <Compile Include="ScreenElements\Label.cs" />
+    <Compile Include="ScreenElements\MenuItem.cs" />
+    <Compile Include="ScreenElements\MovingElement.cs" />
+    <Compile Include="ScreenElements\ScreenElement.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AlphaBomberman.Utilities\AlphaBomberman.Utilities.csproj">
-      <Project>{226cc90e-4d02-4409-84bb-cab59c23b89f}</Project>
-      <Name>AlphaBomberman.Utilities</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
