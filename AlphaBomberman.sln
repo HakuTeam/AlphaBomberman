@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaBomberman.Models", "AlphaBomberman.Models\AlphaBomberman.Models.csproj", "{AEC0D57E-9F6F-4ED9-B19F-2A40C3A61991}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaBomberman.Utilities", "AlphaBomberman.Utilities\AlphaBomberman.Utilities.csproj", "{226CC90E-4D02-4409-84BB-CAB59C23B89F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AEC0D57E-9F6F-4ED9-B19F-2A40C3A61991}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEC0D57E-9F6F-4ED9-B19F-2A40C3A61991}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AEC0D57E-9F6F-4ED9-B19F-2A40C3A61991}.Release|Any CPU.Build.0 = Release|Any CPU
+		{226CC90E-4D02-4409-84BB-CAB59C23B89F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{226CC90E-4D02-4409-84BB-CAB59C23B89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{226CC90E-4D02-4409-84BB-CAB59C23B89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{226CC90E-4D02-4409-84BB-CAB59C23B89F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
