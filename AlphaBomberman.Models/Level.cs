@@ -15,10 +15,9 @@
 
             matrix = FillMatrix(matrix);
             matrix = PlayerPositions(matrix);
-            PrintMatrix(matrix);
         }
 
-        private static void PrintMatrix(char[][] matrix)
+        public static void Print(char[][] matrix)
         {
             for (int i = 0; i < matrix.Length; i++)
             {
