@@ -1,10 +1,9 @@
 ﻿namespace AlphaBomberman.Utilities.Composer
 {
-    using System;
     using ScreenElements;
 
 
-    public partial class Composer
+    public static partial class Composer
     {
         public static string[] Compose(char[][] matrix)
         {
@@ -135,14 +134,21 @@
             return box;
         }
 
-        public static MovingElement GetPlayerOne(int startRow, int startColumn)
+        public static MovingElement MakePlayerOne(int startRow, int startColumn)
         {
-            throw new NotImplementedException();
+            string[] matrix = {PlayerOne.ToString()};
+            var player = new MovingElement(startRow, startColumn);
+            player.SetLayout(matrix);
+            return player;
+
         }
 
         public static MovingElement GetPlayerTwo(int startRow, int startColumn)
         {
-            throw new NotImplementedException();
+            string[] matrix = { PlayerTwo.ToString() };
+            var player = new MovingElement(startRow, startColumn);
+            player.SetLayout(matrix);
+            return player;
         }
 
     }
