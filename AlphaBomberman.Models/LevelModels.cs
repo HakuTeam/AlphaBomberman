@@ -2,27 +2,30 @@
 {
     using System;
 
-    public class Level
+    public class LevelModels
     {
         private const char EmptySpace = ' ';
         private const char Wall = '#';
         private const char BreakingWall = '*';
 
-        public static void Generate()
+        public static char[][] Generate()
         {
             char[][] matrix = new char[11][];
             var rnd = new Random();
 
             matrix = FillMatrix(matrix);
             matrix = PlayerPositions(matrix);
+            return matrix;
         }
 
-        public static void Print(char[][] matrix)
+        public static char[][] Print(char[][] matrix)
         {
             for (int i = 0; i < matrix.Length; i++)
             {
                 Console.WriteLine(string.Join("", matrix[i]));
             }
+
+            return matrix;
         }
 
         private static char[][] FillMatrix(char[][] matrix)
