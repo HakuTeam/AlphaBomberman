@@ -1,53 +1,53 @@
 ﻿namespace AlphaBomberman.Utilities.Composer
 {
-    public partial class Composer
+    public static partial class Composer
     {
         //╔
-        private const char CornerTopL = (char) 9556;
+        public const char CornerTopL = (char) 9556;
 
         //╚ 
-        private const char CornerBottomL = (char) 9562;
+        public const char CornerBottomL = (char) 9562;
 
         //║
-        private const char LineVertical = (char) 9553;
+        public const char LineVertical = (char) 9553;
 
         //╗
-        private const char CornerTopR = (char) 9559;
+        public const char CornerTopR = (char) 9559;
 
         //╝
-        private const char CornerBottomR = (char) 9565;
+        public const char CornerBottomR = (char) 9565;
 
         //═ 
-        private const char LineHorizontal = (char) 9552;
+        public const char LineHorizontal = (char) 9552;
 
         //╠ 
-        private const char CornerMiddleL = (char) 9568;
+        public const char CornerMiddleL = (char) 9568;
 
         //╣
-        private const char CornerMiddleR = (char) 9571;
+        public const char CornerMiddleR = (char) 9571;
 
         //╦
-        private const char CornerMiddleTop = (char) 9574;
+        public const char CornerMiddleTop = (char) 9574;
 
         //╩
-        private const char CornerMiddleBottom = (char) 9577;
+        public const char CornerMiddleBottom = (char) 9577;
 
         //☺
-        private const char Smeyley = '☺';
+        public const char Smeyley = '☺';
 
         //P
-        private const char PlayerOne = 'P';
+        public const char PlayerOne = 'P';
 
         //K
-        private const char PlayerTwo = 'K';
+        public const char PlayerTwo = 'K';
 
         //
-        private const char EmptySpace = ' ';
+        public const char EmptySpace = ' ';
 
         //#
-        private const char Wall = '#';
+        public const char Wall = '#';
 
         //B
-        private const char Bomb = 'B';
+        public const char Bomb = 'B';
     }
 }

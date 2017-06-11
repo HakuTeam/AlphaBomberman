@@ -2,6 +2,7 @@
 {
     using System;
     using ScreenElements;
+    using Composer;
 
     /// <summary>
     /// User to display messages to the user. It contains
