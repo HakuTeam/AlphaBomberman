@@ -10,14 +10,14 @@
     {
         static void Main()
         {
+            Console.CursorVisible = false;
             int gameWidth = 17;
             int gameHeight = 11;
 
 
             //RunHomeScreen(gameWidth,gameHeight);
-
+            Player.DrawLevel();
             Player.Move();
-
             Console.WriteLine("");
 
         }

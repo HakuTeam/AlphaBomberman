@@ -1,7 +1,6 @@
 ﻿namespace AlphaBomberman.Models
 {
     using System;
-    using Utilities.Composer;
 
     public class Player
     {
@@ -9,135 +8,132 @@
         private const char Wall = '#';
         private const char PlayerOneChar = 'P';//☺
         private const char PlayerTwoChar = 'K';//☻
+        private const char Bomb = 'B';
+        public static char[][] level = new char[10][];
+        private static int PlayerOneX = 1;
+        private static int PlayerOneY = 1;
+        private static int PlayerTwoX = level.Length - 2;
+        private static int PlayerTwoY = level.Length - 2;
 
         public static void Move()
         {
-            char[][] matrix = Composer.MakeBoxLayout(17,11);
-
-            for (int row = 1; row < matrix.Length-1; row++)
+            ConsoleKeyInfo keyInfo;
+            while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
-                for (int col = 1; col < matrix[row].Length-1; col++)
+                PlayerOneMove(keyInfo);
+                PlayerTwoMove(keyInfo);
+            }
+        }
+
+        private static void PlayerOneMove(ConsoleKeyInfo keyInfo)
+        {
+            if (keyInfo.Key == ConsoleKey.DownArrow && level[PlayerOneX][PlayerOneY + 1] != Wall && level[PlayerOneX][PlayerOneY + 1] != PlayerTwoChar)
+            {
+                level[PlayerOneX][PlayerOneY] = EmptySpace;
+                Console.SetCursorPosition(PlayerOneX, PlayerOneY);
+                Console.WriteLine(EmptySpace);
+                PlayerOneY++;
+                Console.SetCursorPosition(PlayerOneX, PlayerOneY);
+                Console.Write(PlayerOneChar);
+                level[PlayerOneX][PlayerOneY] = PlayerOneChar;
+            }
+            else if (keyInfo.Key == ConsoleKey.UpArrow && level[PlayerOneX][PlayerOneY - 1] != Wall && level[PlayerOneX][PlayerOneY - 1] != PlayerTwoChar)
+            {
+                level[PlayerOneX][PlayerOneY] = EmptySpace;
+                Console.SetCursorPosition(PlayerOneX, PlayerOneY);
+                Console.WriteLine(EmptySpace);
+                PlayerOneY--;
+                Console.SetCursorPosition(PlayerOneX, PlayerOneY);
+                Console.Write(PlayerOneChar);
+                level[PlayerOneX][PlayerOneY] = PlayerOneChar;
+            }
+            else if (keyInfo.Key == ConsoleKey.LeftArrow && level[PlayerOneX - 1][PlayerOneY] != Wall && level[PlayerOneX - 1][PlayerOneY] != PlayerTwoChar)
+            {
+                level[PlayerOneX][PlayerOneY] = EmptySpace;
+                Console.SetCursorPosition(PlayerOneX, PlayerOneY);
+                Console.WriteLine(EmptySpace);
+                PlayerOneX--;
+                Console.SetCursorPosition(PlayerOneX, PlayerOneY);
+                Console.Write(PlayerOneChar);
+                level[PlayerOneX][PlayerOneY] = PlayerOneChar;
+            }
+            else if (keyInfo.Key == ConsoleKey.RightArrow && level[PlayerOneX + 1][PlayerOneY] != Wall && level[PlayerOneX + 1][PlayerOneY] != PlayerTwoChar)
+            {
+                level[PlayerOneX][PlayerOneY] = EmptySpace;
+                Console.SetCursorPosition(PlayerOneX, PlayerOneY);
+                Console.WriteLine(EmptySpace);
+                PlayerOneX++;
+                Console.SetCursorPosition(PlayerOneX, PlayerOneY);
+                Console.Write(PlayerOneChar);
+                level[PlayerOneX][PlayerOneY] = PlayerOneChar;
+            }
+        }
+
+        private static void PlayerTwoMove(ConsoleKeyInfo keyInfo)
+        {
+            if (keyInfo.Key == ConsoleKey.S && level[PlayerTwoX][PlayerTwoY + 1] != Wall && level[PlayerTwoX][PlayerTwoY + 1] != PlayerOneChar)
+            {
+                level[PlayerTwoX][PlayerTwoY] = EmptySpace;
+                Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
+                Console.WriteLine(EmptySpace);
+                PlayerTwoY++;
+                Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
+                Console.Write(PlayerTwoChar);
+                level[PlayerTwoX][PlayerTwoY] = PlayerTwoChar;
+            }
+            else if (keyInfo.Key == ConsoleKey.W && level[PlayerTwoX][PlayerTwoY - 1] != Wall && level[PlayerTwoX][PlayerTwoY - 1] != PlayerOneChar)
+            {
+                level[PlayerTwoX][PlayerTwoY] = EmptySpace;
+                Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
+                Console.WriteLine(EmptySpace);
+                PlayerTwoY--;
+                Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
+                Console.Write(PlayerTwoChar);
+                level[PlayerTwoX][PlayerTwoY] = PlayerTwoChar;
+            }
+            else if (keyInfo.Key == ConsoleKey.A && level[PlayerTwoX - 1][PlayerTwoY] != Wall && level[PlayerTwoX - 1][PlayerTwoY] != PlayerOneChar)
+            {
+                level[PlayerTwoX][PlayerTwoY] = EmptySpace;
+                Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
+                Console.WriteLine(EmptySpace);
+                PlayerTwoX--;
+                Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
+                Console.Write(PlayerTwoChar);
+                level[PlayerTwoX][PlayerTwoY] = PlayerTwoChar;
+            }
+            else if (keyInfo.Key == ConsoleKey.D && level[PlayerTwoX + 1][PlayerTwoY] != Wall && level[PlayerTwoX + 1][PlayerTwoY] != PlayerOneChar)
+            {
+                level[PlayerTwoX][PlayerTwoY] = EmptySpace;
+                Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
+                Console.WriteLine(EmptySpace);
+                PlayerTwoX++;
+                Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
+                Console.Write(PlayerTwoChar);
+                level[PlayerTwoX][PlayerTwoY] = PlayerTwoChar;
+            }
+        }
+
+        public static void DrawLevel()
+        {
+            Console.SetCursorPosition(0, 0);
+            for (int i = 0; i < 10; i++)
+            {
+                level[i] = new char[10];
+                for (int j = 0; j < 10; j++)
                 {
-                    if (row % 2 == 0 && col % 2 == 0)
+                    if (i == 0 || i == 9 || j == 0 || j == 9)
                     {
-                        matrix[row][col] = Wall;
+                        level[i][j] = '#';
+                        Console.SetCursorPosition(j, i);
+                        Console.Write('#');
                     }
                 }
             }
 
-            matrix[1][1] = Composer.PlayerOne;
-            int playerOneRow = 1;
-            int playerOneCol = 1;
-
-            matrix[9][15] = Composer.PlayerTwo;
-            int playerTwoRow = 9;
-            int playerTwoCol = 15;
-
-
-            while (true)
-            {
-                for (int i = 0; i < matrix.Length; i++)
-                {
-                    for (int j = 0; j < matrix[i].Length; j++)
-                    {
-                        Console.Write(matrix[i][j]);
-                    }
-
-                    Console.WriteLine();
-                }
-
-                ConsoleKeyInfo keyInfo = Console.ReadKey();
-
-                PlayerOneMovement(keyInfo, matrix, ref playerOneRow, ref playerOneCol);
-
-                PlayerTwoMovement(keyInfo, matrix, ref playerTwoRow, ref playerTwoCol);
-
-                Console.Clear();
-            }
-        }
-
-        private static void PlayerOneMovement(ConsoleKeyInfo keyInfo, char[][] matrix, ref int playerRow, ref int playerCol)
-        {
-            if (
-                keyInfo.Key == ConsoleKey.UpArrow 
-                && matrix[playerRow - 1][playerCol] != Composer.Wall 
-                && matrix[playerRow - 1][playerCol] != Composer.LineHorizontal
-                && matrix[playerRow - 1][playerCol] != Composer.Bomb
-                && matrix[playerRow - 1][playerCol] != PlayerTwoChar
-                )
-            {
-                matrix[playerRow][playerCol] = EmptySpace;
-                playerRow--;
-                matrix[playerRow][playerCol] = PlayerOneChar;
-            }
-            else if (
-                keyInfo.Key == ConsoleKey.DownArrow 
-                && matrix[playerRow + 1][playerCol] != Composer.Wall
-                && matrix[playerRow + 1][playerCol] != Composer.LineHorizontal
-                && matrix[playerRow + 1][playerCol] != Composer.Bomb
-                && matrix[playerRow + 1][playerCol] != PlayerTwoChar
-                )
-            {
-                matrix[playerRow][playerCol] = EmptySpace;
-                playerRow++;
-                matrix[playerRow][playerCol] = PlayerOneChar;
-            }
-            else if (
-                keyInfo.Key == ConsoleKey.LeftArrow 
-                && matrix[playerRow][playerCol - 1] != Composer.Wall
-                && matrix[playerRow][playerCol - 1] != Composer.LineVertical
-                && matrix[playerRow][playerCol - 1] != Composer.Bomb
-                && matrix[playerRow][playerCol - 1] != PlayerTwoChar
-                )
-            {
-                matrix[playerRow][playerCol] = EmptySpace;
-                playerCol--;
-                matrix[playerRow][playerCol] = PlayerOneChar;
-            }
-            else if (
-                keyInfo.Key == ConsoleKey.RightArrow 
-                && matrix[playerRow][playerCol + 1] != Composer.Wall
-                && matrix[playerRow][playerCol + 1] != Composer.LineVertical
-                && matrix[playerRow][playerCol + 1] != Composer.Bomb
-                && matrix[playerRow][playerCol + 1] != PlayerTwoChar
-                )
-            {
-                matrix[playerRow][playerCol] = EmptySpace;
-                playerCol++;
-                matrix[playerRow][playerCol] = PlayerOneChar;
-            }
-            else if (keyInfo.Key == ConsoleKey.NumPad0)
-            {
-                matrix[playerRow][playerCol+1] = Composer.Bomb;
-            }
-        }
-
-        private static void PlayerTwoMovement(ConsoleKeyInfo keyInfo, char[][] matrix, ref int playerRow, ref int playerCol)
-        {
-            if (keyInfo.Key == ConsoleKey.W && matrix[playerRow - 1][playerCol] != Wall && matrix[playerRow - 1][playerCol] != PlayerOneChar)
-            {
-                matrix[playerRow][playerCol] = EmptySpace;
-                playerRow--;
-                matrix[playerRow][playerCol] = PlayerTwoChar;
-            }
-            else if (keyInfo.Key == ConsoleKey.S && matrix[playerRow + 1][playerCol] != Wall && matrix[playerRow + 1][playerCol] != PlayerOneChar)
-            {
-                matrix[playerRow][playerCol] = EmptySpace;
-                playerRow++;
-                matrix[playerRow][playerCol] = PlayerTwoChar;
-            }
-            else if (keyInfo.Key == ConsoleKey.A && matrix[playerRow][playerCol - 1] != Wall && matrix[playerRow][playerCol-1] != PlayerOneChar)
-            {
-                matrix[playerRow][playerCol] = EmptySpace;
-                playerCol--;
-                matrix[playerRow][playerCol] = PlayerTwoChar;
-            }
-            else if (keyInfo.Key == ConsoleKey.D && matrix[playerRow][playerCol + 1] != Wall && matrix[playerRow][playerCol+1] != PlayerOneChar)
-            {
-                matrix[playerRow][playerCol] = EmptySpace;
-                playerCol++;
-                matrix[playerRow][playerCol] = PlayerTwoChar;
-            }
+            Console.SetCursorPosition(PlayerOneX, PlayerOneY);
+            Console.Write(PlayerOneChar);
+            Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
+            Console.Write(PlayerTwoChar);
         }
     }
 }
