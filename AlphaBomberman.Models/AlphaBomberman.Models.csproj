@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="Bomb.cs" />
     <Compile Include="LevelModels.cs" />
-    <Compile Include="Mobs.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerU.cs" />
     <Compile Include="Program.cs" />
