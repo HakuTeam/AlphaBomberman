@@ -37,7 +37,7 @@
                 Console.Write(PlayerOneChar);
                 level[PlayerOneX][PlayerOneY] = PlayerOneChar;
             }
-            else if (keyInfo.Key == ConsoleKey.UpArrow && level[PlayerOneX][PlayerOneY - 1] != Wall && level[PlayerOneX][PlayerOneY - 1] != PlayerTwoChar)
+            else if (keyInfo.Key == ConsoleKey.UpArrow && level[PlayerOneX][PlayerOneY - 1] != Wall && level[PlayerOneX][PlayerOneY - 1] != PlayerTwoChar && level[PlayerOneX][PlayerOneY - 1] != '*')
             {
                 level[PlayerOneX][PlayerOneY] = EmptySpace;
                 Console.SetCursorPosition(PlayerOneX, PlayerOneY);
@@ -47,7 +47,7 @@
                 Console.Write(PlayerOneChar);
                 level[PlayerOneX][PlayerOneY] = PlayerOneChar;
             }
-            else if (keyInfo.Key == ConsoleKey.LeftArrow && level[PlayerOneX - 1][PlayerOneY] != Wall && level[PlayerOneX - 1][PlayerOneY] != PlayerTwoChar)
+            else if (keyInfo.Key == ConsoleKey.LeftArrow && level[PlayerOneX - 1][PlayerOneY] != Wall && level[PlayerOneX - 1][PlayerOneY] != PlayerTwoChar && level[PlayerOneX - 1][PlayerOneY] != '*')
             {
                 level[PlayerOneX][PlayerOneY] = EmptySpace;
                 Console.SetCursorPosition(PlayerOneX, PlayerOneY);
@@ -57,7 +57,7 @@
                 Console.Write(PlayerOneChar);
                 level[PlayerOneX][PlayerOneY] = PlayerOneChar;
             }
-            else if (keyInfo.Key == ConsoleKey.RightArrow && level[PlayerOneX + 1][PlayerOneY] != Wall && level[PlayerOneX + 1][PlayerOneY] != PlayerTwoChar)
+            else if (keyInfo.Key == ConsoleKey.RightArrow && level[PlayerOneX + 1][PlayerOneY] != Wall && level[PlayerOneX + 1][PlayerOneY] != PlayerTwoChar && level[PlayerOneX + 1][PlayerOneY] != '*')
             {
                 level[PlayerOneX][PlayerOneY] = EmptySpace;
                 Console.SetCursorPosition(PlayerOneX, PlayerOneY);
@@ -71,7 +71,7 @@
 
         private static void PlayerTwoMove(ConsoleKeyInfo keyInfo)
         {
-            if (keyInfo.Key == ConsoleKey.S && level[PlayerTwoX][PlayerTwoY + 1] != Wall && level[PlayerTwoX][PlayerTwoY + 1] != PlayerOneChar)
+            if (keyInfo.Key == ConsoleKey.S && level[PlayerTwoX][PlayerTwoY + 1] != Wall && level[PlayerTwoX][PlayerTwoY + 1] != PlayerOneChar && level[PlayerTwoX][PlayerTwoY + 1] != '*')
             {
                 level[PlayerTwoX][PlayerTwoY] = EmptySpace;
                 Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
@@ -81,7 +81,7 @@
                 Console.Write(PlayerTwoChar);
                 level[PlayerTwoX][PlayerTwoY] = PlayerTwoChar;
             }
-            else if (keyInfo.Key == ConsoleKey.W && level[PlayerTwoX][PlayerTwoY - 1] != Wall && level[PlayerTwoX][PlayerTwoY - 1] != PlayerOneChar)
+            else if (keyInfo.Key == ConsoleKey.W && level[PlayerTwoX][PlayerTwoY - 1] != Wall && level[PlayerTwoX][PlayerTwoY - 1] != PlayerOneChar && level[PlayerTwoX][PlayerTwoY - 1] != '*')
             {
                 level[PlayerTwoX][PlayerTwoY] = EmptySpace;
                 Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
@@ -91,7 +91,7 @@
                 Console.Write(PlayerTwoChar);
                 level[PlayerTwoX][PlayerTwoY] = PlayerTwoChar;
             }
-            else if (keyInfo.Key == ConsoleKey.A && level[PlayerTwoX - 1][PlayerTwoY] != Wall && level[PlayerTwoX - 1][PlayerTwoY] != PlayerOneChar)
+            else if (keyInfo.Key == ConsoleKey.A && level[PlayerTwoX - 1][PlayerTwoY] != Wall && level[PlayerTwoX - 1][PlayerTwoY] != PlayerOneChar && level[PlayerTwoX - 1][PlayerTwoY] != '*')
             {
                 level[PlayerTwoX][PlayerTwoY] = EmptySpace;
                 Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
@@ -101,7 +101,7 @@
                 Console.Write(PlayerTwoChar);
                 level[PlayerTwoX][PlayerTwoY] = PlayerTwoChar;
             }
-            else if (keyInfo.Key == ConsoleKey.D && level[PlayerTwoX + 1][PlayerTwoY] != Wall && level[PlayerTwoX + 1][PlayerTwoY] != PlayerOneChar)
+            else if (keyInfo.Key == ConsoleKey.D && level[PlayerTwoX + 1][PlayerTwoY] != Wall && level[PlayerTwoX + 1][PlayerTwoY] != PlayerOneChar && level[PlayerTwoX + 1][PlayerTwoY] != '*')
             {
                 level[PlayerTwoX][PlayerTwoY] = EmptySpace;
                 Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
