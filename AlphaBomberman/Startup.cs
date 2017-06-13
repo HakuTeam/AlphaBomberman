@@ -11,12 +11,12 @@
         static void Main()
         {
             Console.CursorVisible = false;
-            int gameWidth = 17;
-            int gameHeight = 11;
+            //int gameWidth = 17;
+            //int gameHeight = 11;
 
 
             //RunHomeScreen(gameWidth,gameHeight);
-            Player.DrawLevel();
+            LevelModels.DrawMatrix();
             //LevelModels.DrawMatrix(); I tried to draw the level and make connection with the player but failed /Ilian
             Player.Move();
             Console.WriteLine("");

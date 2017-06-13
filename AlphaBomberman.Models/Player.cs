@@ -9,11 +9,11 @@
         private const char PlayerOneChar = 'P';//☺
         private const char PlayerTwoChar = 'K';//☻
         private const char Bomb = 'B';
-        public static char[][] level = new char[10][];
+        public static char[][] level = LevelModels.DrawMatrix();
         public  static int PlayerOneX = 1;
         public  static int PlayerOneY = 1;
         private static int PlayerTwoX = level.Length - 2;
-        private static int PlayerTwoY = level.Length - 2;
+        private static int PlayerTwoY = level[level.Length - 2].Length - 2;
 
         public static void Move()
         {
@@ -27,7 +27,7 @@
 
         private static void PlayerOneMove(ConsoleKeyInfo keyInfo)
         {
-            if (keyInfo.Key == ConsoleKey.DownArrow && level[PlayerOneX][PlayerOneY + 1] != Wall && level[PlayerOneX][PlayerOneY + 1] != PlayerTwoChar)
+            if (keyInfo.Key == ConsoleKey.DownArrow && level[PlayerOneX][PlayerOneY + 1] != Wall && level[PlayerOneX][PlayerOneY + 1] != PlayerTwoChar && level[PlayerOneX][PlayerOneY + 1] != '*')
             {
                 level[PlayerOneX][PlayerOneY] = EmptySpace;
                 Console.SetCursorPosition(PlayerOneX, PlayerOneY);
@@ -113,27 +113,27 @@
             }
         }
 
-        public static void DrawLevel()
-        {
-            Console.SetCursorPosition(0, 0);
-            for (int i = 0; i < 10; i++)
-            {
-                level[i] = new char[10];
-                for (int j = 0; j < 10; j++)
-                {
-                    if (i == 0 || i == 9 || j == 0 || j == 9)
-                    {
-                        level[i][j] = '#';
-                        Console.SetCursorPosition(j, i);
-                        Console.Write('#');
-                    }
-                }
-            }
+        //public static void DrawLevel()
+        //{
+        //    Console.SetCursorPosition(0, 0);
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        level[i] = new char[10];
+        //        for (int j = 0; j < 10; j++)
+        //        {
+        //            if (i == 0 || i == 9 || j == 0 || j == 9)
+        //            {
+        //                level[i][j] = '#';
+        //                Console.SetCursorPosition(j, i);
+        //                Console.Write('#');
+        //            }
+        //        }
+        //    }
 
-            Console.SetCursorPosition(PlayerOneX, PlayerOneY);
-            Console.Write(PlayerOneChar);
-            Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
-            Console.Write(PlayerTwoChar);
-        }
+        //    Console.SetCursorPosition(PlayerOneX, PlayerOneY);
+        //    Console.Write(PlayerOneChar);
+        //    Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
+        //    Console.Write(PlayerTwoChar);
+        //}
     }
 }

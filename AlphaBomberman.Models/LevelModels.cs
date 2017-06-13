@@ -9,16 +9,18 @@
         private const char BreakingWall = '*';
         private const char FirstPlayer = 'P';
         private const char SecondPlayer = 'K';
+        public static char[][] matrix = new char[33][];
+
 
         public static char[][] DrawMatrix()
         {
-            char[][] matrix = new char[11][];
+            char[][] matrix = new char[17][];
 
             var rnd = new Random();
 
             for (int i = 0; i < matrix.Length; i++)
             {
-                matrix[i] = new char[17];
+                matrix[i] = new char[11];
             }
             for (int row = 0; row < matrix.Length; row++)
             {
@@ -36,20 +38,20 @@
                     {
                         //matrix[row][col] = Wall;
                         matrix[row][col] = Wall;
-                        Console.SetCursorPosition(col, row);
+                        Console.SetCursorPosition(row, col);
                         Console.Write(Wall);
                     }
                     else if (row % 2 == 0 && col % 2 == 0)
                     {
                         //matrix[row][col] = Wall;
                         matrix[row][col] = Wall;
-                        Console.SetCursorPosition(col, row);
+                        Console.SetCursorPosition(row, col);
                         Console.Write(Wall);
                     }
                     else if (secondPlayerPositionUp || secondPlayerPositionleft || secondPlayerPosition)
                     {
                         matrix[matrix.Length - 2][matrix[matrix.Length - 2].Length - 2] = SecondPlayer;
-                        Console.SetCursorPosition(matrix[matrix.Length - 2].Length - 2, matrix.Length - 2);
+                        Console.SetCursorPosition(matrix.Length - 2, matrix[matrix.Length - 2].Length - 2);
                         Console.Write(SecondPlayer);
 
                         matrix[matrix.Length - 2][matrix[matrix.Length - 2].Length - 3] = EmptySpace;
@@ -82,13 +84,13 @@
                         if (matrix[row][col] == EmptySpace)
                         {
                             matrix[row][col] = EmptySpace;
-                            Console.SetCursorPosition(col, row);
+                            Console.SetCursorPosition(row, col);
                             Console.Write(EmptySpace);
                         }
                         else
                         {
                             matrix[row][col] = BreakingWall;
-                            Console.SetCursorPosition(col, row);
+                            Console.SetCursorPosition(row, col);
                             Console.Write(BreakingWall);
                         }
                     }
