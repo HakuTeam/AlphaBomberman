@@ -10,7 +10,7 @@
         private const char FirstPlayer = 'P';
         private const char SecondPlayer = 'K';
 
-        public static char DrawMatrix()
+        public static char[][] DrawMatrix()
         {
             char[][] matrix = new char[11][];
 
@@ -94,7 +94,8 @@
                     }
                 }
             }
-            return EmptySpace;
+            //return EmptySpace;
+            return matrix;
         }
     }
 }

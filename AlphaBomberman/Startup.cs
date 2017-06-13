@@ -17,6 +17,7 @@
 
             //RunHomeScreen(gameWidth,gameHeight);
             Player.DrawLevel();
+            //LevelModels.DrawMatrix(); I tried to draw the level and make connection with the player but failed /Ilian
             Player.Move();
             Console.WriteLine("");
 

@@ -10,8 +10,8 @@
         private const char PlayerTwoChar = 'K';//☻
         private const char Bomb = 'B';
         public static char[][] level = new char[10][];
-        private static int PlayerOneX = 1;
-        private static int PlayerOneY = 1;
+        public  static int PlayerOneX = 1;
+        public  static int PlayerOneY = 1;
         private static int PlayerTwoX = level.Length - 2;
         private static int PlayerTwoY = level.Length - 2;
 

@@ -6,9 +6,16 @@
     public class Bomb
     {
         public int Power;
-        public int Range;
+        public static int Range()
+        {
+            var range = 3;
+            return range;
+        }
         public Player Owner;
-        public Timer Timer;
+        public static Timer Timer()
+        {
+            var timer = new Timer(4000);
+        }
         //Not quite sure whether to put it with the mobs or the player so I decided both 
     }
 }
