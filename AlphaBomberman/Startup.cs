@@ -1,9 +1,7 @@
 ﻿namespace AlphaBomberman
 {
     using System;
-    using AlphaBomberman.Utilities.ScreenElements;
     using Models;
-    using Utilities.Composer;
     using Utilities.ScreenElementsComposite;
 
     class Startup
@@ -17,15 +15,11 @@
 
             //RunHomeScreen(gameWidth,gameHeight);
             LevelModels.DrawMatrix();
-            //LevelModels.DrawMatrix(); I tried to draw the level and make connection with the player but failed /Ilian
             Player.Move();
-            Console.WriteLine("");
-
         }
 
         static void RunHomeScreen(int width, int height)
         {
-
             Console.WindowWidth = width*2+5;
             Console.WindowHeight = height * 2 + 5;
             Console.BufferWidth = width * 2 + 5;
@@ -39,8 +33,6 @@
 
             levelOne.Print();
             RestConsoleColors();
-
-
         }
 
         static void RestConsoleColors()
