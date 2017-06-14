@@ -15,7 +15,7 @@
         protected int _column;
         protected int _row;
 
-        protected ScreenElement(int row, int column)
+        protected ScreenElement(int row = 0, int column = 0)
         {
             _column = column;
             _row = row;

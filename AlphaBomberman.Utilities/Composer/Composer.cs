@@ -127,11 +127,16 @@
 
         public static MovingElement GetBox(int width, int height, int startRow, int startColumn)
         {
-            string[] matrix = Compose(MakeBoxLayout(width, height));
+            string[] stringBox = GetStringBox(width, height);
             var box = new MovingElement(startRow, startColumn);
-            box.SetLayout(matrix);
+            box.SetLayout(stringBox);
 
             return box;
+        }
+
+        public static string[] GetStringBox(int width, int height)
+        {
+            return Compose(MakeBoxLayout(width, height));
         }
 
         public static MovingElement MakePlayerOne(int startRow, int startColumn)

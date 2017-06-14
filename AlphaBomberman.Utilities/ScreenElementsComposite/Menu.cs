@@ -3,6 +3,7 @@
     using System;
     using Ennumetation;
     using ScreenElements;
+    using Composer;
 
     /// <summary>
     /// The Menu class can be used for all menus in the game.
@@ -16,10 +17,26 @@
     public class Menu : ScreenGroup
     {
         private int _selected;
+        private readonly StaticElement _menuFrame;
+
+        public Menu(int width, int height): base()
+        {
+            var frame = Composer.GetStringBox(width, height);
+            _menuFrame = new StaticElement(frame);
+        }
 
         public void Add(int x, int y, string content, Command command)
         {
             var item = new MenuItem(x, y, content, command);
+            _elements.Add(item);
+        }
+
+        public void Add(string content, Command command)
+        {
+            var col = _menuFrame.Width() / 2 - content.Length / 2;
+            var row = 1 + Elements.Count + 1;
+
+            var item = new MenuItem(row, col, content, command);
             _elements.Add(item);
         }
 
@@ -49,6 +66,10 @@
         /// </summary>
         public override void Print()
         {
+            if (!_menuFrame.Visible)
+            {
+                _menuFrame.Print();
+            }
             for (int i = 0; i < Elements.Count; i++)
             {
                 if (i == _selected)

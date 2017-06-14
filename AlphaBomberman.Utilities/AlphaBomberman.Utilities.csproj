@@ -55,6 +55,7 @@
     <Compile Include="ScreenElements\MenuItem.cs" />
     <Compile Include="ScreenElements\MovingElement.cs" />
     <Compile Include="ScreenElements\ScreenElement.cs" />
+    <Compile Include="ScreenElements\StaticElement.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
