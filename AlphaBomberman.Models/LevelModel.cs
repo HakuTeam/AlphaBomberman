@@ -2,19 +2,22 @@
 {
     using System;
 
-    public class LevelModels
+    public class LevelModel
     {
-        public static char[][] matrix = new char[33][];
+        public char[][] Matrix { get; }
 
-        public static char[][] DrawMatrix()
+        public int Width { get; set; }
+        public int Height { get; set; }
+
+        public char[][] DrawMatrix()
         {
-            char[][] matrix = new char[17][];
+            char[][] matrix = new char[Height][];
 
             var rnd = new Random();
 
             for (int i = 0; i < matrix.Length; i++)
             {
-                matrix[i] = new char[11];
+                matrix[i] = new char[Width];
             }
             for (int row = 0; row < matrix.Length; row++)
             {
@@ -92,6 +95,18 @@
             }
             //return EmptySpace;
             return matrix;
+        }
+
+        public LevelModel(int width, int height)
+        {
+            Width = width;
+            Height = height;
+            Matrix = DrawMatrix();
+        }
+
+        public int GetDownRightIndex()
+        {
+            return Matrix.Length - 2;
         }
     }
 }

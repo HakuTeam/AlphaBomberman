@@ -8,9 +8,9 @@
 
     public class BombExplosion
     {
-        public static char[][] Explosion()  // was void initially
+        public static LevelModel Explosion()  // was void initially
         {
-            var field = LevelModels.DrawMatrix();
+            var field = new LevelModel(11, 17);
             var bombCoordinatesRow = Player.PlayerOneY;
             var bombCoordinatesCol = Player.PlayerOneX;
             var range = Bomb.Range();
@@ -20,76 +20,76 @@
             //blow left
             for (int rowIndex = bombCoordinatesRow - range; rowIndex < bombCoordinatesRow; rowIndex++)
             {
-                if (IsInMatrix(rowIndex, bombCoordinatesCol, field))
+                if (IsInMatrix(rowIndex, bombCoordinatesCol, field.Matrix))
                 {
-                    if (field[rowIndex][bombCoordinatesCol] == '*')
+                    if (field.Matrix[rowIndex][bombCoordinatesCol] == '*')
                     {
-                        field[rowIndex][bombCoordinatesCol] = ' ';
+                        field.Matrix[rowIndex][bombCoordinatesCol] = ' ';
                     }
-                    else if (field[rowIndex][bombCoordinatesCol] == '#')
+                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == '#')
                     {
                         break;
                     }
-                    else if (field[rowIndex][bombCoordinatesCol] == 'P' || field[rowIndex][bombCoordinatesCol] == 'K')
+                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == 'P' || field.Matrix[rowIndex][bombCoordinatesCol] == 'K')
                     {
-                        field[rowIndex][bombCoordinatesCol] = ' ';
+                        field.Matrix[rowIndex][bombCoordinatesCol] = ' ';
                     }
                 }
             }
             //blow right
             for (int rowIndex = bombCoordinatesRow + 1; rowIndex <= bombCoordinatesRow + range; rowIndex++)
             {
-                if (IsInMatrix(rowIndex,bombCoordinatesCol,field))
+                if (IsInMatrix(rowIndex, bombCoordinatesCol, field.Matrix))
                 {
-                    if (field[rowIndex][bombCoordinatesCol] == '*')
+                    if (field.Matrix[rowIndex][bombCoordinatesCol] == '*')
                     {
-                        field[rowIndex][bombCoordinatesCol] = ' ';
+                        field.Matrix[rowIndex][bombCoordinatesCol] = ' ';
                     }
-                    else if (field[rowIndex][bombCoordinatesCol] == '#')
+                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == '#')
                     {
                         break;
                     }
-                    else if (field[rowIndex][bombCoordinatesCol] == 'P' || field[rowIndex][bombCoordinatesCol] == 'K')
+                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == 'P' || field.Matrix[rowIndex][bombCoordinatesCol] == 'K')
                     {
-                        field[rowIndex][bombCoordinatesCol] = ' ';
+                        field.Matrix[rowIndex][bombCoordinatesCol] = ' ';
                     }
                 }
             }
             //blow up
             for (int colIndex = bombCoordinatesCol - range; colIndex < bombCoordinatesCol; colIndex++)
             {
-                if (IsInMatrix(bombCoordinatesRow,colIndex,field))
+                if (IsInMatrix(bombCoordinatesRow, colIndex, field.Matrix))
                 {
-                    if (field[bombCoordinatesRow][colIndex] == '*')
+                    if (field.Matrix[bombCoordinatesRow][colIndex] == '*')
                     {
-                        field[bombCoordinatesRow][colIndex] = ' ';
+                        field.Matrix[bombCoordinatesRow][colIndex] = ' ';
                     }
-                    else if (field[bombCoordinatesRow][colIndex] == '#')
+                    else if (field.Matrix[bombCoordinatesRow][colIndex] == '#')
                     {
                         break;
                     }
-                    else if (field[bombCoordinatesRow][colIndex] == 'P' || field[bombCoordinatesRow][colIndex] == 'K')
+                    else if (field.Matrix[bombCoordinatesRow][colIndex] == 'P' || field.Matrix[bombCoordinatesRow][colIndex] == 'K')
                     {
-                        field[bombCoordinatesRow][colIndex] = ' ';
+                        field.Matrix[bombCoordinatesRow][colIndex] = ' ';
                     }
                 }
             }
             //blow down
             for (int colIndex = bombCoordinatesCol + 1; colIndex < bombCoordinatesCol + range; colIndex++)
             {
-                if (IsInMatrix(bombCoordinatesRow, colIndex, field))
+                if (IsInMatrix(bombCoordinatesRow, colIndex, field.Matrix))
                 {
-                    if (field[bombCoordinatesRow][colIndex] == '*')
+                    if (field.Matrix[bombCoordinatesRow][colIndex] == '*')
                     {
-                        field[bombCoordinatesRow][colIndex] = ' ';
+                        field.Matrix[bombCoordinatesRow][colIndex] = ' ';
                     }
-                    else if (field[bombCoordinatesRow][colIndex] == '#')
+                    else if (field.Matrix[bombCoordinatesRow][colIndex] == '#')
                     {
                         break;
                     }
-                    else if (field[bombCoordinatesRow][colIndex] == 'P' || field[bombCoordinatesRow][colIndex] == 'K')
+                    else if (field.Matrix[bombCoordinatesRow][colIndex] == 'P' || field.Matrix[bombCoordinatesRow][colIndex] == 'K')
                     {
-                        field[bombCoordinatesRow][colIndex] = ' ';
+                        field.Matrix[bombCoordinatesRow][colIndex] = ' ';
                     }
                 }
             }

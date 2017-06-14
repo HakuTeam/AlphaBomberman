@@ -14,7 +14,6 @@
 
 
             //RunHomeScreen(gameWidth,gameHeight);
-            LevelModels.DrawMatrix();
             Player.Move();
         }
 
