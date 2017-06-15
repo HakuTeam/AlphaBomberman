@@ -1,6 +1,7 @@
 ﻿namespace AlphaBomberman
 {
     using System;
+    using System.Reflection.Emit;
     using Models;
     using Utilities.Ennumetation;
     using Utilities.Input;
@@ -10,26 +11,20 @@
     class Startup
     {
 
-        public const int GameWidth = 17;
-        public const int GameHeight = 11;
+        public static int GameWidth = 17;
+        public static int GameHeight = 11;
+
+        public const int HomeWidth = 20;
+        public const int HomeHeight = 10;
 
         static void Main()
         {
-            RunHomeScreen(GameWidth, GameHeight);
-
+            RunHomeScreen(HomeWidth, HomeHeight);
         }
 
         static void RunHomeScreen(int width, int height)
         {
-            Console.CursorVisible = false;
-            Console.WindowWidth = width * 2 + 5;
-            Console.WindowHeight = height * 2 + 5;
-            Console.BufferWidth = width * 2 + 5;
-            Console.BufferHeight = height * 2 + 5;
-
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Clear();
+            PrepareConsole(width, height);
 
             //create menu
             var homeMenu = new Menu(width, height);
@@ -37,6 +32,7 @@
             //add menu items
             homeMenu.Add("START GAME", Command.StartGame);
             homeMenu.Add("EXIT GAME", Command.Exit);
+            homeMenu.Print();
 
 
             while (true)
@@ -62,11 +58,39 @@
             }
         }
 
+        private static void PrepareConsole(int width, int height)
+        {
+            Console.CursorVisible = false;
+            Console.WindowWidth = width + 5;
+            Console.WindowHeight = height + 5;
+            Console.BufferWidth = width + 5;
+            Console.BufferHeight = height + 5;
+            Console.Clear();
+        }
+
+        private static int GetUserInput(string message)
+        {
+            int uInput = 0;
+            Input inputAlert = new Input(HomeHeight / 2, HomeWidth / 2, message, 5);
+
+            inputAlert.Print();
+
+            return uInput;
+        }
+
         public static void ExecCommand(Command command)
         {
             switch (command)
             {
                 case Command.StartGame:
+                    var size = GetUserInput("Level width:");
+                    GameHeight = size;
+
+                    size = GetUserInput("Level height:");
+                    GameWidth = size;
+
+                    PrepareConsole(GameWidth,GameHeight);
+                    var player = new Player(new LevelModel(GameWidth, GameHeight));
                     Player.Move();
                     break;
                 case Command.Exit:
@@ -75,7 +99,7 @@
                     Environment.Exit(0);
                     break;
                 case Command.HomeScreen:
-                    //end game clear da go to home screen
+                    //end game clear then go to home screen
                     Console.Clear();
                     RunHomeScreen(GameWidth, GameHeight);
                     break;

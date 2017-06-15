@@ -22,7 +22,7 @@
         public Menu(int width, int height): base()
         {
             var frame = Composer.GetStringBox(width, height);
-            _menuFrame = new StaticElement(frame);
+            _menuFrame = new StaticElement(frame,ConsoleColor.Green);
         }
 
         public void Add(int x, int y, string content, Command command)
