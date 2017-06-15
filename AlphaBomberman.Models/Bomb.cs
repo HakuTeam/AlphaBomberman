@@ -14,7 +14,7 @@
         public Player Owner;
         public static Timer Timer()
         {
-            var timer = new Timer(4000);
+            var timer = new Timer(3000);
             return timer;
         }
         //Not quite sure whether to put it with the mobs or the player so I decided both 

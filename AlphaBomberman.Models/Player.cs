@@ -1,6 +1,7 @@
 ﻿namespace AlphaBomberman.Models
 {
     using System;
+    using System.Timers;
 
     public class Player
     {
@@ -76,8 +77,18 @@
             }
             else if (keyInfo.Key == ConsoleKey.NumPad0/* bombs left and player is not dead */)
             {
-
+                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.bombChar;
+                Console.SetCursorPosition(PlayerOneX, PlayerOneY);
+                Console.WriteLine(GameChars.bombChar);
+                var timer = Bomb.Timer();
+                timer.Start();
+                timer.Elapsed += new ElapsedEventHandler(MakeBoomP);
             }
+        }
+
+        private static void MakeBoomP(object sender, ElapsedEventArgs e)
+        {
+            BombExplosion.Explosion(PlayerOneX, PlayerOneY);
         }
 
         private static void PlayerTwoMove(ConsoleKeyInfo keyInfo)
@@ -124,8 +135,18 @@
             }
             else if (keyInfo.Key == ConsoleKey.Spacebar/* bombs left and player is not dead */)
             {
-
+                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.bombChar;
+                Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
+                Console.WriteLine(GameChars.bombChar);
+                var timer = Bomb.Timer();
+                timer.Start();
+                timer.Elapsed += new ElapsedEventHandler(MakeBoomK);
             }
+        }
+
+        private static void MakeBoomK(object sender, ElapsedEventArgs e)
+        {
+            BombExplosion.Explosion(PlayerTwoX, PlayerTwoY);
         }
     }
 }
