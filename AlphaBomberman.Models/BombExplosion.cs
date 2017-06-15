@@ -14,7 +14,7 @@
             var bombCoordinatesRow = Player.PlayerOneY;
             var bombCoordinatesCol = Player.PlayerOneX;
             var range = Bomb.Range();
-            var timer = Bomb.Timer();
+            //var timer = Bomb.Timer();
             // timer functionality will be added in the near future :D :D :D 
 
             //blow left
@@ -25,6 +25,7 @@
                     if (field.Matrix[rowIndex][bombCoordinatesCol] == '*')
                     {
                         field.Matrix[rowIndex][bombCoordinatesCol] = ' ';
+                        break;
                     }
                     else if (field.Matrix[rowIndex][bombCoordinatesCol] == '#')
                     {
@@ -44,6 +45,7 @@
                     if (field.Matrix[rowIndex][bombCoordinatesCol] == '*')
                     {
                         field.Matrix[rowIndex][bombCoordinatesCol] = ' ';
+                        break;
                     }
                     else if (field.Matrix[rowIndex][bombCoordinatesCol] == '#')
                     {
@@ -63,6 +65,7 @@
                     if (field.Matrix[bombCoordinatesRow][colIndex] == '*')
                     {
                         field.Matrix[bombCoordinatesRow][colIndex] = ' ';
+                        break;
                     }
                     else if (field.Matrix[bombCoordinatesRow][colIndex] == '#')
                     {
@@ -82,6 +85,7 @@
                     if (field.Matrix[bombCoordinatesRow][colIndex] == '*')
                     {
                         field.Matrix[bombCoordinatesRow][colIndex] = ' ';
+                        break;
                     }
                     else if (field.Matrix[bombCoordinatesRow][colIndex] == '#')
                     {
