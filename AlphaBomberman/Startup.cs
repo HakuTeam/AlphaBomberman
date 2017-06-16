@@ -70,12 +70,18 @@
 
         private static int GetUserInput(string message)
         {
-            int uInput = 0;
+            string uInput;
+
             Input inputAlert = new Input(HomeHeight / 2, HomeWidth / 2, message, 5);
 
             inputAlert.Print();
+            uInput = Console.ReadLine();
 
-            return uInput;
+            if (string.IsNullOrEmpty(uInput))
+            {
+                return 20;
+            }
+            return int.Parse(uInput);
         }
 
         public static void ExecCommand(Command command)
