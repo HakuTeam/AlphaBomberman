@@ -12,20 +12,21 @@
         //    Explosion(row, col);
         //    return Explosion(row, col);
         //}
-
+        public static LevelModel Level = Player.Level;
+ 
         public static LevelModel Explosion(int row, int col)  // was void initially
         {
-            var field = new LevelModel(11, 17);
+            var field = Level;
             var bombCoordinatesRow = row /*Player.PlayerOneY*/;
             var bombCoordinatesCol = col /*Player.PlayerOneX*/;
-            var range = Bomb.Range();
+            var range = 3;
 
             //blow left
             for (int rowIndex = bombCoordinatesRow - range; rowIndex < bombCoordinatesRow; rowIndex++)
             {
                 if (IsInMatrix(rowIndex, bombCoordinatesCol, field.Matrix))
                 {
-                    if (field.Matrix[rowIndex][bombCoordinatesCol] == '*')
+                    if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.destructibleWall)
                     {
                         field.Matrix[rowIndex][bombCoordinatesCol] = ' ';
                         break;
@@ -49,7 +50,7 @@
             {
                 if (IsInMatrix(rowIndex, bombCoordinatesCol, field.Matrix))
                 {
-                    if (field.Matrix[rowIndex][bombCoordinatesCol] == '*')
+                    if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.destructibleWall)
                     {
                         field.Matrix[rowIndex][bombCoordinatesCol] = ' ';
                         break;
@@ -73,7 +74,7 @@
             {
                 if (IsInMatrix(bombCoordinatesRow, colIndex, field.Matrix))
                 {
-                    if (field.Matrix[bombCoordinatesRow][colIndex] == '*')
+                    if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.destructibleWall)
                     {
                         field.Matrix[bombCoordinatesRow][colIndex] = ' ';
                         break;
@@ -97,7 +98,7 @@
             {
                 if (IsInMatrix(bombCoordinatesRow, colIndex, field.Matrix))
                 {
-                    if (field.Matrix[bombCoordinatesRow][colIndex] == '*')
+                    if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.destructibleWall)
                     {
                         field.Matrix[bombCoordinatesRow][colIndex] = ' ';
                         break;
@@ -117,6 +118,11 @@
                 }
             }
             //field[bombCoordinatesRow][bombCoordinatesCol] = ' '; //-> NOT WORKING FOR SOME REASON
+
+            //for (int i = 0; i < field.Matrix.Length; i++)
+            //{
+            //    Console.WriteLine(string.Join("", field.Matrix[i]));
+            //}
             return field;
         }
 

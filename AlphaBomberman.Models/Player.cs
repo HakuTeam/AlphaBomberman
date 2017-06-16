@@ -1,6 +1,7 @@
 ﻿namespace AlphaBomberman.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.Timers;
 
     public class Player
@@ -10,6 +11,7 @@
         public static int PlayerOneY;
         public static int PlayerTwoX;
         public static int PlayerTwoY;
+        public static List<Bomb> bombs = new List<Bomb>();
 
         public Player(LevelModel level)
         {
@@ -75,15 +77,15 @@
                 Console.Write(GameChars.playerOneChar);
                 Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.playerOneChar;
             }
-            else if (keyInfo.Key == ConsoleKey.NumPad0/* bombs left and player is not dead */)
-            {
-                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.bombChar;
-                Console.SetCursorPosition(PlayerOneX, PlayerOneY);
-                Console.WriteLine(GameChars.bombChar);
-                var timer = Bomb.Timer();
-                timer.Start();
-                timer.Elapsed += new ElapsedEventHandler(MakeBoomP);
-            }
+            //else if (keyInfo.Key == ConsoleKey.NumPad0/* bombs left and player is not dead */)
+            //{
+            //    Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.bombChar;
+            //    Console.SetCursorPosition(PlayerOneX, PlayerOneY);
+            //    Console.WriteLine(GameChars.bombChar);
+            //    var timer = this.Timer();
+            //    timer.Start();
+            //    timer.Elapsed += new ElapsedEventHandler(MakeBoomP);
+            //}
         }
 
         private static void MakeBoomP(object sender, ElapsedEventArgs e)
@@ -135,12 +137,17 @@
             }
             else if (keyInfo.Key == ConsoleKey.Spacebar/* bombs left and player is not dead */)
             {
-                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.bombChar;
-                Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
-                Console.WriteLine(GameChars.bombChar);
-                var timer = Bomb.Timer();
-                timer.Start();
-                timer.Elapsed += new ElapsedEventHandler(MakeBoomK);
+                var bomb = new Bomb(PlayerTwoY, PlayerTwoX, Level, 3);
+                bombs.Add(bomb);
+            }
+
+            for (int i = 0; i < bombs.Count; i++)
+            {
+                if (bombs[i].Timer.ElapsedMilliseconds >= bombs[i].Clock)
+                {
+                    bombs[i].Explode();
+                    bombs.Remove(bombs[i]);
+                }
             }
         }
 

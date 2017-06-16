@@ -61,8 +61,8 @@
         private static void PrepareConsole(int width, int height)
         {
             Console.CursorVisible = false;
-            Console.WindowWidth = width + 5;
-            Console.WindowHeight = height + 5;
+            Console.WindowWidth = width +5;
+            Console.WindowHeight = height +5;
             Console.BufferWidth = width + 5;
             Console.BufferHeight = height + 5;
             Console.Clear();
