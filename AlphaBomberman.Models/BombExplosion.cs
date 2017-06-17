@@ -38,7 +38,7 @@
                     }
                     else if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.BombChar)
                     {
-                        BombExplosion.Explosion(rowIndex, bombCoordinatesCol);
+                        //BombExplosion.Explosion(rowIndex, bombCoordinatesCol);
                     }
                 }
             }
@@ -62,7 +62,7 @@
                     }
                     else if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.BombChar)
                     {
-                        BombExplosion.Explosion(rowIndex, bombCoordinatesCol);
+                        //BombExplosion.Explosion(rowIndex, bombCoordinatesCol);
                     }
                 }
             }
@@ -86,7 +86,7 @@
                     }
                     else if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.BombChar)
                     {
-                        BombExplosion.Explosion(bombCoordinatesRow, colIndex);
+                        //BombExplosion.Explosion(bombCoordinatesRow, colIndex);
                     }
                 }
             }
@@ -110,7 +110,7 @@
                     }
                     else if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.BombChar)
                     {
-                        BombExplosion.Explosion(bombCoordinatesRow, colIndex);
+                        //BombExplosion.Explosion(bombCoordinatesRow, colIndex);
                     }
                 }
             }

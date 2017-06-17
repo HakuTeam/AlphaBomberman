@@ -89,10 +89,10 @@
             //}
         }
 
-        private static void MakeBoomP(object sender, ElapsedEventArgs e)
-        {
-            BombExplosion.Explosion(PlayerOneX, PlayerOneY);
-        }
+        //private static void MakeBoomP(object sender, ElapsedEventArgs e)
+        //{
+        //    BombExplosion.Explosion(PlayerOneX, PlayerOneY);
+        //}
 
         private static void PlayerTwoMove(ConsoleKeyInfo keyInfo)
         {
@@ -138,7 +138,7 @@
             }
             else if (keyInfo.Key == ConsoleKey.Spacebar/* bombs left and player is not dead */)
             {
-                var bomb = new Bomb(PlayerTwoY, PlayerTwoX, Level, 3);
+                var bomb = new Bomb(PlayerTwoX, PlayerTwoY, Level, 3);
                 bombs.Add(bomb);
             }
 

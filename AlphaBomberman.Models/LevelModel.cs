@@ -76,20 +76,20 @@
                     }
                     else
                     {
-                        matrix[row][col] = (char)rnd.Next(' ', '"');
+                        //matrix[row][col] = (char)rnd.Next(' ', '"');
 
-                        if (matrix[row][col] == GameChars.EmptySpace)
-                        {
-                            matrix[row][col] = GameChars.EmptySpace;
-                            Console.SetCursorPosition(row, col);
-                            Console.Write(GameChars.EmptySpace);
-                        }
-                        else
-                        {
+                        //if (matrix[row][col] == GameChars.EmptySpace)
+                        //{
+                        //    matrix[row][col] = GameChars.EmptySpace;
+                        //    Console.SetCursorPosition(row, col);
+                        //    Console.Write(GameChars.EmptySpace);
+                        //}
+                        //else
+                        //{
                             matrix[row][col] = GameChars.DestructibleWall;
                             Console.SetCursorPosition(row, col);
                             Console.Write(GameChars.DestructibleWall);
-                        }
+                        //}
                     }
                 }
             }
