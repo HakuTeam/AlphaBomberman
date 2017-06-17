@@ -151,10 +151,5 @@
                 }
             }
         }
-
-        private static void MakeBoomK(object sender, ElapsedEventArgs e)
-        {
-            BombExplosion.Explosion(PlayerTwoX, PlayerTwoY);
-        }
     }
 }
