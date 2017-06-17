@@ -49,13 +49,37 @@
             }
         }
 
-        private static void PrepareConsole(int width, int height)
+        /// <summary>
+        /// Prepares the console size. Does not allow values larger then the largest posible for the current screen resolution.
+        /// </summary>
+        /// <param name="width">The width of the window and buffer.</param>
+        /// <param name="height">The heightof the window and buffer.</param>
+        public static void PrepareConsole(int width, int height)
         {
             Console.CursorVisible = false;
-            Console.WindowWidth = width + 5;
-            Console.WindowHeight = height + 5;
-            Console.BufferWidth = width + 5;
-            Console.BufferHeight = height + 5;
+
+            if (width > Console.LargestWindowWidth-5)
+            {
+                Console.WindowWidth = Console.LargestWindowWidth-5;
+                Console.BufferWidth = Console.LargestWindowWidth;
+            }
+            else
+            {
+                Console.WindowWidth = width;
+                Console.BufferWidth = width;
+            }
+
+            if (height > Console.LargestWindowHeight - 5)
+            {
+                Console.WindowHeight = Console.LargestWindowHeight-5;
+                Console.BufferHeight = Console.LargestWindowHeight;
+            }
+            else
+            {
+                Console.WindowHeight = height;
+                Console.BufferHeight = height;
+            }
+
             Console.Clear();
         }
 
