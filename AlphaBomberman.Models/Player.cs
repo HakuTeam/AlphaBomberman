@@ -30,6 +30,7 @@
                 PlayerOneMove(keyInfo);
                 PlayerTwoMove(keyInfo);
             }
+
             Console.Clear();
             Console.WriteLine("Exit successful!");
             Environment.Exit(0);
@@ -37,45 +38,45 @@
 
         private static void PlayerOneMove(ConsoleKeyInfo keyInfo)
         {
-            if (keyInfo.Key == ConsoleKey.DownArrow && Level.Matrix[PlayerOneX][PlayerOneY + 1] != GameChars.indestructibleWall && Level.Matrix[PlayerOneX][PlayerOneY + 1] != GameChars.playerTwoChar && Level.Matrix[PlayerOneX][PlayerOneY + 1] != GameChars.destructibleWall)
+            if (keyInfo.Key == ConsoleKey.DownArrow && Level.Matrix[PlayerOneX][PlayerOneY + 1] != GameChars.IndestructibleWall && Level.Matrix[PlayerOneX][PlayerOneY + 1] != GameChars.PlayerTwoChar && Level.Matrix[PlayerOneX][PlayerOneY + 1] != GameChars.DestructibleWall && Level.Matrix[PlayerOneX][PlayerOneY + 1] != GameChars.BombChar)
             {
-                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.emptySpace;
+                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.EmptySpace;
                 Console.SetCursorPosition(PlayerOneX, PlayerOneY);
-                Console.WriteLine(GameChars.emptySpace);
+                Console.WriteLine(GameChars.EmptySpace);
                 PlayerOneY++;
                 Console.SetCursorPosition(PlayerOneX, PlayerOneY);
-                Console.Write(GameChars.playerOneChar);
-                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.playerOneChar;
+                Console.Write(GameChars.PlayerOneChar);
+                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.PlayerOneChar;
             }
-            else if (keyInfo.Key == ConsoleKey.UpArrow && Level.Matrix[PlayerOneX][PlayerOneY - 1] != GameChars.indestructibleWall && Level.Matrix[PlayerOneX][PlayerOneY - 1] != GameChars.playerTwoChar && Level.Matrix[PlayerOneX][PlayerOneY - 1] != GameChars.destructibleWall)
+            else if (keyInfo.Key == ConsoleKey.UpArrow && Level.Matrix[PlayerOneX][PlayerOneY - 1] != GameChars.IndestructibleWall && Level.Matrix[PlayerOneX][PlayerOneY - 1] != GameChars.PlayerTwoChar && Level.Matrix[PlayerOneX][PlayerOneY - 1] != GameChars.DestructibleWall && Level.Matrix[PlayerOneX][PlayerOneY - 1] != GameChars.BombChar)
             {
-                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.emptySpace;
+                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.EmptySpace;
                 Console.SetCursorPosition(PlayerOneX, PlayerOneY);
-                Console.WriteLine(GameChars.emptySpace);
+                Console.WriteLine(GameChars.EmptySpace);
                 PlayerOneY--;
                 Console.SetCursorPosition(PlayerOneX, PlayerOneY);
-                Console.Write(GameChars.playerOneChar);
-                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.playerOneChar;
+                Console.Write(GameChars.PlayerOneChar);
+                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.PlayerOneChar;
             }
-            else if (keyInfo.Key == ConsoleKey.LeftArrow && Level.Matrix[PlayerOneX - 1][PlayerOneY] != GameChars.indestructibleWall && Level.Matrix[PlayerOneX - 1][PlayerOneY] != GameChars.playerTwoChar && Level.Matrix[PlayerOneX - 1][PlayerOneY] != GameChars.destructibleWall)
+            else if (keyInfo.Key == ConsoleKey.LeftArrow && Level.Matrix[PlayerOneX - 1][PlayerOneY] != GameChars.IndestructibleWall && Level.Matrix[PlayerOneX - 1][PlayerOneY] != GameChars.PlayerTwoChar && Level.Matrix[PlayerOneX - 1][PlayerOneY] != GameChars.DestructibleWall && Level.Matrix[PlayerOneX - 1][PlayerOneY] != GameChars.BombChar)
             {
-                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.emptySpace;
+                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.EmptySpace;
                 Console.SetCursorPosition(PlayerOneX, PlayerOneY);
-                Console.WriteLine(GameChars.emptySpace);
+                Console.WriteLine(GameChars.EmptySpace);
                 PlayerOneX--;
                 Console.SetCursorPosition(PlayerOneX, PlayerOneY);
-                Console.Write(GameChars.playerOneChar);
-                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.playerOneChar;
+                Console.Write(GameChars.PlayerOneChar);
+                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.PlayerOneChar;
             }
-            else if (keyInfo.Key == ConsoleKey.RightArrow && Level.Matrix[PlayerOneX + 1][PlayerOneY] != GameChars.indestructibleWall && Level.Matrix[PlayerOneX + 1][PlayerOneY] != GameChars.playerTwoChar && Level.Matrix[PlayerOneX + 1][PlayerOneY] != GameChars.destructibleWall)
+            else if (keyInfo.Key == ConsoleKey.RightArrow && Level.Matrix[PlayerOneX + 1][PlayerOneY] != GameChars.IndestructibleWall && Level.Matrix[PlayerOneX + 1][PlayerOneY] != GameChars.PlayerTwoChar && Level.Matrix[PlayerOneX + 1][PlayerOneY] != GameChars.DestructibleWall && Level.Matrix[PlayerOneX + 1][PlayerOneY] != GameChars.BombChar)
             {
-                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.emptySpace;
+                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.EmptySpace;
                 Console.SetCursorPosition(PlayerOneX, PlayerOneY);
-                Console.WriteLine(GameChars.emptySpace);
+                Console.WriteLine(GameChars.EmptySpace);
                 PlayerOneX++;
                 Console.SetCursorPosition(PlayerOneX, PlayerOneY);
-                Console.Write(GameChars.playerOneChar);
-                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.playerOneChar;
+                Console.Write(GameChars.PlayerOneChar);
+                Level.Matrix[PlayerOneX][PlayerOneY] = GameChars.PlayerOneChar;
             }
             //else if (keyInfo.Key == ConsoleKey.NumPad0/* bombs left and player is not dead */)
             //{
@@ -95,45 +96,45 @@
 
         private static void PlayerTwoMove(ConsoleKeyInfo keyInfo)
         {
-            if (keyInfo.Key == ConsoleKey.S && Level.Matrix[PlayerTwoX][PlayerTwoY + 1] != GameChars.indestructibleWall && Level.Matrix[PlayerTwoX][PlayerTwoY + 1] != GameChars.playerOneChar && Level.Matrix[PlayerTwoX][PlayerTwoY + 1] != GameChars.destructibleWall)
+            if (keyInfo.Key == ConsoleKey.S && Level.Matrix[PlayerTwoX][PlayerTwoY + 1] != GameChars.IndestructibleWall && Level.Matrix[PlayerTwoX][PlayerTwoY + 1] != GameChars.PlayerOneChar && Level.Matrix[PlayerTwoX][PlayerTwoY + 1] != GameChars.DestructibleWall && Level.Matrix[PlayerTwoX][PlayerTwoY + 1] != GameChars.BombChar)
             {
-                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.emptySpace;
+                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.EmptySpace;
                 Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
-                Console.WriteLine(GameChars.emptySpace);
+                Console.WriteLine(GameChars.EmptySpace);
                 PlayerTwoY++;
                 Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
-                Console.Write(GameChars.playerTwoChar);
-                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.playerTwoChar;
+                Console.Write(GameChars.PlayerTwoChar);
+                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.PlayerTwoChar;
             }
-            else if (keyInfo.Key == ConsoleKey.W && Level.Matrix[PlayerTwoX][PlayerTwoY - 1] != GameChars.indestructibleWall && Level.Matrix[PlayerTwoX][PlayerTwoY - 1] != GameChars.playerOneChar && Level.Matrix[PlayerTwoX][PlayerTwoY - 1] != GameChars.destructibleWall)
+            else if (keyInfo.Key == ConsoleKey.W && Level.Matrix[PlayerTwoX][PlayerTwoY - 1] != GameChars.IndestructibleWall && Level.Matrix[PlayerTwoX][PlayerTwoY - 1] != GameChars.PlayerOneChar && Level.Matrix[PlayerTwoX][PlayerTwoY - 1] != GameChars.DestructibleWall && Level.Matrix[PlayerTwoX][PlayerTwoY - 1] != GameChars.BombChar)
             {
-                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.emptySpace;
+                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.EmptySpace;
                 Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
-                Console.WriteLine(GameChars.emptySpace);
+                Console.WriteLine(GameChars.EmptySpace);
                 PlayerTwoY--;
                 Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
-                Console.Write(GameChars.playerTwoChar);
-                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.playerTwoChar;
+                Console.Write(GameChars.PlayerTwoChar);
+                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.PlayerTwoChar;
             }
-            else if (keyInfo.Key == ConsoleKey.A && Level.Matrix[PlayerTwoX - 1][PlayerTwoY] != GameChars.indestructibleWall && Level.Matrix[PlayerTwoX - 1][PlayerTwoY] != GameChars.playerOneChar && Level.Matrix[PlayerTwoX - 1][PlayerTwoY] != GameChars.destructibleWall)
+            else if (keyInfo.Key == ConsoleKey.A && Level.Matrix[PlayerTwoX - 1][PlayerTwoY] != GameChars.IndestructibleWall && Level.Matrix[PlayerTwoX - 1][PlayerTwoY] != GameChars.PlayerOneChar && Level.Matrix[PlayerTwoX - 1][PlayerTwoY] != GameChars.DestructibleWall && Level.Matrix[PlayerTwoX - 1][PlayerTwoY] != GameChars.BombChar)
             {
-                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.emptySpace;
+                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.EmptySpace;
                 Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
-                Console.WriteLine(GameChars.emptySpace);
+                Console.WriteLine(GameChars.EmptySpace);
                 PlayerTwoX--;
                 Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
-                Console.Write(GameChars.playerTwoChar);
-                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.playerTwoChar;
+                Console.Write(GameChars.PlayerTwoChar);
+                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.PlayerTwoChar;
             }
-            else if (keyInfo.Key == ConsoleKey.D && Level.Matrix[PlayerTwoX + 1][PlayerTwoY] != GameChars.indestructibleWall && Level.Matrix[PlayerTwoX + 1][PlayerTwoY] != GameChars.playerOneChar && Level.Matrix[PlayerTwoX + 1][PlayerTwoY] != GameChars.destructibleWall)
+            else if (keyInfo.Key == ConsoleKey.D && Level.Matrix[PlayerTwoX + 1][PlayerTwoY] != GameChars.IndestructibleWall && Level.Matrix[PlayerTwoX + 1][PlayerTwoY] != GameChars.PlayerOneChar && Level.Matrix[PlayerTwoX + 1][PlayerTwoY] != GameChars.DestructibleWall && Level.Matrix[PlayerTwoX + 1][PlayerTwoY] != GameChars.BombChar)
             {
-                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.emptySpace;
+                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.EmptySpace;
                 Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
-                Console.WriteLine(GameChars.emptySpace);
+                Console.WriteLine(GameChars.EmptySpace);
                 PlayerTwoX++;
                 Console.SetCursorPosition(PlayerTwoX, PlayerTwoY);
-                Console.Write(GameChars.playerTwoChar);
-                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.playerTwoChar;
+                Console.Write(GameChars.PlayerTwoChar);
+                Level.Matrix[PlayerTwoX][PlayerTwoY] = GameChars.PlayerTwoChar;
             }
             else if (keyInfo.Key == ConsoleKey.Spacebar/* bombs left and player is not dead */)
             {

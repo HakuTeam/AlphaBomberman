@@ -1,8 +1,5 @@
 ﻿namespace AlphaBomberman.Models
 {
-    using System;
-    using System.Timers;
-
     public class BombExplosion
     {
         //public static ElapsedEventHandler AfterTimer(int row, int col)
@@ -26,20 +23,20 @@
             {
                 if (IsInMatrix(rowIndex, bombCoordinatesCol, field.Matrix))
                 {
-                    if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.destructibleWall)
+                    if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.DestructibleWall)
                     {
-                        field.Matrix[rowIndex][bombCoordinatesCol] = ' ';
+                        field.Matrix[rowIndex][bombCoordinatesCol] = GameChars.EmptySpace;
                         break;
                     }
-                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == '#')
+                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.IndestructibleWall)
                     {
                         break;
                     }
-                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == 'P' || field.Matrix[rowIndex][bombCoordinatesCol] == 'K')
+                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.PlayerOneChar || field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.PlayerTwoChar)
                     {
-                        field.Matrix[rowIndex][bombCoordinatesCol] = ' ';
+                        field.Matrix[rowIndex][bombCoordinatesCol] = GameChars.EmptySpace;
                     }
-                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == 'B')
+                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.BombChar)
                     {
                         BombExplosion.Explosion(rowIndex, bombCoordinatesCol);
                     }
@@ -50,20 +47,20 @@
             {
                 if (IsInMatrix(rowIndex, bombCoordinatesCol, field.Matrix))
                 {
-                    if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.destructibleWall)
+                    if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.DestructibleWall)
                     {
-                        field.Matrix[rowIndex][bombCoordinatesCol] = ' ';
+                        field.Matrix[rowIndex][bombCoordinatesCol] = GameChars.EmptySpace;
                         break;
                     }
-                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == '#')
+                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.IndestructibleWall)
                     {
                         break;
                     }
-                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == 'P' || field.Matrix[rowIndex][bombCoordinatesCol] == 'K')
+                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.PlayerOneChar || field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.PlayerTwoChar)
                     {
-                        field.Matrix[rowIndex][bombCoordinatesCol] = ' ';
+                        field.Matrix[rowIndex][bombCoordinatesCol] = GameChars.EmptySpace;
                     }
-                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == 'B')
+                    else if (field.Matrix[rowIndex][bombCoordinatesCol] == GameChars.BombChar)
                     {
                         BombExplosion.Explosion(rowIndex, bombCoordinatesCol);
                     }
@@ -74,20 +71,20 @@
             {
                 if (IsInMatrix(bombCoordinatesRow, colIndex, field.Matrix))
                 {
-                    if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.destructibleWall)
+                    if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.DestructibleWall)
                     {
-                        field.Matrix[bombCoordinatesRow][colIndex] = ' ';
+                        field.Matrix[bombCoordinatesRow][colIndex] = GameChars.EmptySpace;
                         break;
                     }
-                    else if (field.Matrix[bombCoordinatesRow][colIndex] == '#')
+                    else if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.IndestructibleWall)
                     {
                         break;
                     }
-                    else if (field.Matrix[bombCoordinatesRow][colIndex] == 'P' || field.Matrix[bombCoordinatesRow][colIndex] == 'K')
+                    else if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.PlayerOneChar || field.Matrix[bombCoordinatesRow][colIndex] == GameChars.PlayerTwoChar)
                     {
-                        field.Matrix[bombCoordinatesRow][colIndex] = ' ';
+                        field.Matrix[bombCoordinatesRow][colIndex] = GameChars.EmptySpace;
                     }
-                    else if (field.Matrix[bombCoordinatesRow][colIndex] == 'B')
+                    else if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.BombChar)
                     {
                         BombExplosion.Explosion(bombCoordinatesRow, colIndex);
                     }
@@ -98,26 +95,26 @@
             {
                 if (IsInMatrix(bombCoordinatesRow, colIndex, field.Matrix))
                 {
-                    if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.destructibleWall)
+                    if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.DestructibleWall)
                     {
-                        field.Matrix[bombCoordinatesRow][colIndex] = ' ';
+                        field.Matrix[bombCoordinatesRow][colIndex] = GameChars.EmptySpace;
                         break;
                     }
-                    else if (field.Matrix[bombCoordinatesRow][colIndex] == '#')
+                    else if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.IndestructibleWall)
                     {
                         break;
                     }
-                    else if (field.Matrix[bombCoordinatesRow][colIndex] == 'P' || field.Matrix[bombCoordinatesRow][colIndex] == 'K')
+                    else if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.PlayerOneChar || field.Matrix[bombCoordinatesRow][colIndex] == GameChars.PlayerTwoChar)
                     {
-                        field.Matrix[bombCoordinatesRow][colIndex] = ' ';
+                        field.Matrix[bombCoordinatesRow][colIndex] = GameChars.EmptySpace;
                     }
-                    else if (field.Matrix[bombCoordinatesRow][colIndex] == 'B')
+                    else if (field.Matrix[bombCoordinatesRow][colIndex] == GameChars.BombChar)
                     {
                         BombExplosion.Explosion(bombCoordinatesRow, colIndex);
                     }
                 }
             }
-            //field[bombCoordinatesRow][bombCoordinatesCol] = ' '; //-> NOT WORKING FOR SOME REASON
+            //field[bombCoordinatesRow][bombCoordinatesCol] = GameChars.EmptySpace; //-> NOT WORKING FOR SOME REASON
 
             //for (int i = 0; i < field.Matrix.Length; i++)
             //{
