@@ -2,7 +2,6 @@
 {
     using ScreenElements;
 
-
     public static partial class Composer
     {
         public static string[] Compose(char[][] matrix)
@@ -125,11 +124,10 @@
             }
         }
 
-        public static MovingElement GetBox(int width, int height, int startRow, int startColumn)
+        public static StaticElement GetBox(int width, int height, int startRow, int startColumn)
         {
             string[] stringBox = GetStringBox(width, height);
-            var box = new MovingElement(startRow, startColumn);
-            box.SetLayout(stringBox);
+            var box = new StaticElement(stringBox, startRow, startColumn);
 
             return box;
         }
@@ -137,23 +135,6 @@
         public static string[] GetStringBox(int width, int height)
         {
             return Compose(MakeBoxLayout(width, height));
-        }
-
-        public static MovingElement MakePlayerOne(int startRow, int startColumn)
-        {
-            string[] matrix = {PlayerOne.ToString()};
-            var player = new MovingElement(startRow, startColumn);
-            player.SetLayout(matrix);
-            return player;
-
-        }
-
-        public static MovingElement GetPlayerTwo(int startRow, int startColumn)
-        {
-            string[] matrix = { PlayerTwo.ToString() };
-            var player = new MovingElement(startRow, startColumn);
-            player.SetLayout(matrix);
-            return player;
         }
 
     }

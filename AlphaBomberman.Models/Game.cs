@@ -15,7 +15,7 @@
 
         public static void RunHomeScreen(int width, int height)
         {
-            PrepareConsole(width, height);
+            PrepareConsole();
 
             //create menu
             var homeMenu = new Menu(width, height);
@@ -54,33 +54,18 @@
         /// </summary>
         /// <param name="width">The width of the window and buffer.</param>
         /// <param name="height">The heightof the window and buffer.</param>
-        public static void PrepareConsole(int width, int height)
+        public static void PrepareConsole()
         {
             Console.CursorVisible = false;
 
-            if (width > Console.LargestWindowWidth-5)
-            {
-                Console.WindowWidth = Console.LargestWindowWidth-5;
-                Console.BufferWidth = Console.LargestWindowWidth;
-            }
-            else
-            {
-                Console.WindowWidth = width;
-                Console.BufferWidth = width;
-            }
+            Console.WindowWidth = Console.LargestWindowWidth-5;
 
-            if (height > Console.LargestWindowHeight - 5)
-            {
-                Console.WindowHeight = Console.LargestWindowHeight-5;
-                Console.BufferHeight = Console.LargestWindowHeight;
-            }
-            else
-            {
-                Console.WindowHeight = height;
-                Console.BufferHeight = height;
-            }
+            Console.WindowHeight = Console.LargestWindowHeight-5;
+            Console.BufferWidth = Console.LargestWindowWidth;
+            Console.BufferHeight = Console.LargestWindowHeight;
 
             Console.Clear();
+            Console.SetCursorPosition(1,1);
         }
 
         private static int GetUserInput(string message)
@@ -110,7 +95,6 @@
                     size = GetUserInput("Level height:");
                     GameWidth = size;
 
-                    PrepareConsole(GameWidth, GameHeight);
                     var player = new Player(new LevelModel(GameWidth, GameHeight));
                     Player.Move();
                     break;

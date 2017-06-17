@@ -14,53 +14,43 @@
     /// an example of inheritence
     /// </remarks>
     
-    // TODO - refactor the class to match the new game with x movement
     public class MovingElement : ScreenElement
     {
-        public string[] _layout;
-        protected int _rowDestination;
-        protected int _columnDestination;
+        private char _elementChar;
+        public int _columnDestination;
         protected bool _visible;
         
         public MovingElement(int row, int column)
             : base(row, column)
         {
-            _rowDestination = _row;
-            _columnDestination = column;
-            _layout = new[] { "" };
+            RowDestination = _row;
+            _columnDestination = _column;
+            _elementChar = ' ';
             _visible = false;
         }
 
-        public int RowDestination
+        public int RowDestination { get; set; }
+
+        public int ColumnDestination { get; set; }
+
+        public void SetChar(char layout)
         {
-            get { return _rowDestination; }
-            set { _rowDestination = value; }
+            _elementChar = layout;
         }
 
-        public int ColumnDestination
+        public void Move()
         {
-            get { return _columnDestination; }
-            set { _columnDestination = value; }
-        }
-
-        public void SetLayout(string[] layout)
-        {
-            _layout = layout;
-        }
-
-        public virtual void Move()
-        {
-            if (_visible && (_rowDestination != _row || _columnDestination != _column))
+            if (_visible && (RowDestination != _row || _columnDestination != _column))
             {
                 Console.MoveBufferArea(
                     _column,
                     _row,
-                    _layout[0].Length,
-                    _layout.Length,
+                    1,
+                    1,
                     _columnDestination,
-                    _rowDestination
+                    RowDestination
                 );
-                _row = _rowDestination;
+                _row = RowDestination;
                 _column = _columnDestination;
             }
         }
@@ -68,18 +58,7 @@
         public override void Print()
         {
             Console.SetCursorPosition(Column, Row);
-
-            foreach (string line in _layout)
-            {
-                int colAfter = Console.CursorLeft + line.Length;
-                Console.Write(line);
-                Console.CursorLeft = Column;
-                if (colAfter < Console.WindowWidth && Console.CursorTop < Console.BufferHeight - 1)
-                {
-                    Console.CursorTop++;
-                }
-
-            }
+            Console.Write(_elementChar);
             _visible = true;
         }
     }
