@@ -39,111 +39,129 @@
 
         public void Explode()
         {
-            var bombCoordinatesRow = this.Row;
-            var bombCoordinatesCol = this.Column;
-
-            //blow left
-            for (int rowIndex = bombCoordinatesRow - 1; rowIndex >= bombCoordinatesRow - Range; rowIndex--)
+            //Blow UP
+            for (int explodeRow = Row - 1; explodeRow >= Row - Range; explodeRow--)
             {
-                if (IsInMatrix(rowIndex, bombCoordinatesCol, Level.Matrix))
+                if (!IsInMatrix(explodeRow, Column, Level.Matrix))
                 {
-                    if (Level.Matrix[rowIndex][bombCoordinatesCol] == GameChars.IndestructibleWall)
-                    {
-                        break;
-                    }
-                    else if (Level.Matrix[rowIndex][bombCoordinatesCol] == GameChars.DestructibleWall)
-                    {
-                        Level.Matrix[rowIndex][bombCoordinatesCol] = GameChars.EmptySpace;
-                        PrintBlownUpToEmpty(rowIndex, bombCoordinatesCol);
-                        break;
-                    }
-                    else if (Level.Matrix[rowIndex][bombCoordinatesCol] == GameChars.PlayerOneChar || Level.Matrix[rowIndex][bombCoordinatesCol] == GameChars.PlayerTwoChar)
-                    {
-                        Level.Matrix[rowIndex][bombCoordinatesCol] = GameChars.EmptySpace;
-                    }
-                    //else if (Level.Matrix[rowIndex][bombCoordinatesCol] == GameChars.BombChar)
-                    //{
-                    //    //BombExplosion.Explosion(rowIndex, bombCoordinatesCol);
-                    //}
+                    break;
                 }
+                if (Level.Matrix[explodeRow][Column] == GameChars.IndestructibleWall)
+                {
+                    break;
+                }
+                if (Level.Matrix[explodeRow][Column] == GameChars.DestructibleWall)
+                {
+                    Level.Matrix[explodeRow][Column] = GameChars.EmptySpace;
+                    PrintBlownUpToEmpty(explodeRow, Column);
+                    break;
+                }
+                if (
+                    Level.Matrix[explodeRow][Column] == GameChars.PlayerOneChar 
+                    || Level.Matrix[explodeRow][Column] == GameChars.PlayerTwoChar
+                    )
+                {
+                    Level.Matrix[explodeRow][Column] = GameChars.EmptySpace;
+                    //TO DO: Player.Kill() or PLayer.Life --;
+                }
+                //TO DO: Destroy bombs Game.Bombs.RemoveByCoords(Rox,Column);
+                //else if (Level.Matrix[explodeRow][Column] == GameChars.BombChar)
+                //{
+                //    //BombExplosion.Explosion(rowIndex, Column);
+                //}
             }
 
-            //blow right
-            for (int rowIndex = bombCoordinatesRow; rowIndex <= bombCoordinatesRow + Range; rowIndex++)
+            //Blow Down
+            for (int explodeRow = Row; explodeRow <= Row + Range; explodeRow++)
             {
-                if (IsInMatrix(rowIndex, bombCoordinatesCol, Level.Matrix))
+                if (!IsInMatrix(explodeRow, Column, Level.Matrix))
                 {
-                    if (Level.Matrix[rowIndex][bombCoordinatesCol] == GameChars.IndestructibleWall)
-                    {
-                        break;
-                    }
-                    else if (Level.Matrix[rowIndex][bombCoordinatesCol] == GameChars.DestructibleWall)
-                    {
-                        Level.Matrix[rowIndex][bombCoordinatesCol] = GameChars.EmptySpace;
-                        PrintBlownUpToEmpty(rowIndex, bombCoordinatesCol);
-                        break;
-                    }
-                    else if (Level.Matrix[rowIndex][bombCoordinatesCol] == GameChars.PlayerOneChar || Level.Matrix[rowIndex][bombCoordinatesCol] == GameChars.PlayerTwoChar)
-                    {
-                        Level.Matrix[rowIndex][bombCoordinatesCol] = GameChars.EmptySpace;
-                    }
-                    //else if (Level.Matrix[rowIndex][bombCoordinatesCol] == GameChars.BombChar)
-                    //{
-                    //    //BombExplosion.Explosion(rowIndex, bombCoordinatesCol);
-                    //}
+                    break;
                 }
+                if (Level.Matrix[explodeRow][Column] == GameChars.IndestructibleWall)
+                {
+                    break;
+                }
+                if (Level.Matrix[explodeRow][Column] == GameChars.DestructibleWall)
+                {
+                    Level.Matrix[explodeRow][Column] = GameChars.EmptySpace;
+                    PrintBlownUpToEmpty(explodeRow, Column);
+                    break;
+                }
+                if (
+                    Level.Matrix[explodeRow][Column] == GameChars.PlayerOneChar 
+                    || Level.Matrix[explodeRow][Column] == GameChars.PlayerTwoChar
+                    )
+                {
+                    Level.Matrix[explodeRow][Column] = GameChars.EmptySpace;
+                    //TO DO: Player.Kill() or PLayer.Life --;
+                }
+                //TO DO: Destroy bombs Game.Bombs.RemoveByCoords(Rox,Column);
+                //else if (Level.Matrix[explodeRow][Column] == GameChars.BombChar)
+                //{
+                //    //BombExplosion.Explosion(rowIndex, Column);
+                //}
             }
 
-            //blow down
-            for (int colIndex = bombCoordinatesCol; colIndex < bombCoordinatesCol + Range+1; colIndex++)
+            //Blow Right
+            for (int explodeColumn = Column; explodeColumn <= Column + Range; explodeColumn++)
             {
-                if (IsInMatrix(colIndex, bombCoordinatesRow, Level.Matrix))
+                if (!IsInMatrix(explodeColumn, Row, Level.Matrix))
                 {
-                    if (Level.Matrix[bombCoordinatesRow][colIndex] == GameChars.IndestructibleWall)
-                    {
-                        break;
-                    }
-                    else if (Level.Matrix[bombCoordinatesRow][colIndex] == GameChars.DestructibleWall)
-                    {
-                        Level.Matrix[bombCoordinatesRow][colIndex] = GameChars.EmptySpace;
-                        PrintBlownUpToEmpty(bombCoordinatesRow, colIndex);
-                        break;
-                    }
-                    else if (Level.Matrix[bombCoordinatesRow][colIndex] == GameChars.PlayerOneChar || Level.Matrix[bombCoordinatesRow][colIndex] == GameChars.PlayerTwoChar)
-                    {
-                        Level.Matrix[bombCoordinatesRow][colIndex] = GameChars.EmptySpace;
-                    }
-                    //else if (Level.Matrix[colIndex][bombCoordinatesCol] == GameChars.BombChar)
-                    //{
-                    //    //BombExplosion.Explosion(rowIndex, bombCoordinatesCol);
-                    //}
+                    break;
                 }
+                if (Level.Matrix[Row][explodeColumn] == GameChars.IndestructibleWall)
+                {
+                    break;
+                }
+                if (Level.Matrix[Row][explodeColumn] == GameChars.DestructibleWall)
+                {
+                    Level.Matrix[Row][explodeColumn] = GameChars.EmptySpace;
+                    PrintBlownUpToEmpty(Row, explodeColumn);
+                    break;
+                }
+                if (
+                    Level.Matrix[Row][explodeColumn] == GameChars.PlayerOneChar 
+                    || Level.Matrix[Row][explodeColumn] == GameChars.PlayerTwoChar
+                    )
+                {
+                    Level.Matrix[Row][explodeColumn] = GameChars.EmptySpace;
+                    //TO DO: Player.Kill() or PLayer.Life --;
+                }
+                //TO DO: Destroy bombs Game.Bombs.RemoveByCoords(Rox,Column);
+                //else if (Level.Matrix[colIndex][Column] == GameChars.BombChar)
+                //{
+                //    //BombExplosion.Explosion(rowIndex, Column);
+                //}
             }
 
-            //blow up
-            for (int colIndex = bombCoordinatesCol; colIndex >= bombCoordinatesCol-Range; colIndex--)
+            //Blow Left
+            for (int explodeColumn = Column; explodeColumn >= Column-Range; explodeColumn--)
             {
-                if (IsInMatrix(colIndex, bombCoordinatesRow, Level.Matrix))
+                if (!IsInMatrix(explodeColumn, Row, Level.Matrix))
                 {
-                    if (Level.Matrix[bombCoordinatesRow][colIndex] == GameChars.IndestructibleWall)
-                    {
-                        break;
-                    }
-                    else if (Level.Matrix[bombCoordinatesRow][colIndex] == GameChars.DestructibleWall)
-                    {
-                        Level.Matrix[bombCoordinatesRow][colIndex] = GameChars.EmptySpace;
-                        PrintBlownUpToEmpty(bombCoordinatesRow, colIndex);
-                        break;
-                    }
-                    else if (Level.Matrix[bombCoordinatesRow][colIndex] == GameChars.PlayerOneChar || Level.Matrix[bombCoordinatesRow][colIndex] == GameChars.PlayerTwoChar)
-                    {
-                        Level.Matrix[bombCoordinatesRow][colIndex] = GameChars.EmptySpace;
-                    }
-                    //else if (Level.Matrix[colIndex][bombCoordinatesCol] == GameChars.BombChar)
-                    //{
-                    //    //BombExplosion.Explosion(rowIndex, bombCoordinatesCol);
-                    //}
+                    break;
                 }
+                if (Level.Matrix[Row][explodeColumn] == GameChars.IndestructibleWall)
+                {
+                    break;
+                }
+                if (Level.Matrix[Row][explodeColumn] == GameChars.DestructibleWall)
+                {
+                    Level.Matrix[Row][explodeColumn] = GameChars.EmptySpace;
+                    PrintBlownUpToEmpty(Row, explodeColumn);
+                    break;
+                }
+                if (Level.Matrix[Row][explodeColumn] == GameChars.PlayerOneChar || Level.Matrix[Row][explodeColumn] == GameChars.PlayerTwoChar)
+                {
+                    Level.Matrix[Row][explodeColumn] = GameChars.EmptySpace;
+                    //TO DO: Player.Kill() or PLayer.Life --;
+                }
+                //TO DO: Destroy bombs Game.Bombs.RemoveByCoords(Rox,Column);
+                //else if (Level.Matrix[colIndex][Column] == GameChars.BombChar)
+                //{
+                //    //BombExplosion.Explosion(rowIndex, Column);
+                //}
             }
         }
 
@@ -155,8 +173,12 @@
 
         private static bool IsInMatrix(int currentRow, int currentCol, char[][] Level)
         {
-            if (currentRow >= 0 && currentRow < Level.Length &&
-                currentCol >= 0 && currentCol < Level[currentRow].Length)
+            if (
+                currentRow >= 0 
+                && currentRow < Level.Length 
+                && currentCol >= 0 
+                && currentCol < Level[currentRow].Length
+                )
             {
                 return true;
             }

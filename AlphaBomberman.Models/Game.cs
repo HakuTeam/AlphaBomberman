@@ -1,9 +1,9 @@
 ﻿namespace AlphaBomberman.Models
 {
     using System;
-    using AlphaBomberman.Utilities.Ennumetation;
-    using AlphaBomberman.Utilities.Input;
-    using AlphaBomberman.Utilities.ScreenElementsComposite;
+    using Utilities.Ennumetation;
+    using Utilities.Input;
+    using Utilities.ScreenElementsComposite;
     using Utilities.Composer;
     using Utilities.ScreenElements;
 
@@ -161,7 +161,7 @@
                     {
                         GameHeight = userIntInput;
                     }
-
+                    Console.Clear();
                     var player = new Player(new LevelModel(GameWidth, GameHeight));
                     Player.Move();
                     break;
