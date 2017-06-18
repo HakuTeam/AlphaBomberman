@@ -35,20 +35,20 @@
                     {
                         //matrix[row][col] = Wall;
                         matrix[row][col] = GameChars.IndestructibleWall;
-                        Console.SetCursorPosition(row, col);
+                        Console.SetCursorPosition(col,row);
                         Console.Write(GameChars.IndestructibleWall);
                     }
                     else if (row % 2 == 0 && col % 2 == 0)
                     {
                         //matrix[row][col] = Wall;
                         matrix[row][col] = GameChars.IndestructibleWall;
-                        Console.SetCursorPosition(row, col);
+                        Console.SetCursorPosition(col,row);
                         Console.Write(GameChars.IndestructibleWall);
                     }
                     else if (secondPlayerPositionUp || secondPlayerPositionleft || secondPlayerPosition)
                     {
                         matrix[matrix.Length - 2][matrix[matrix.Length - 2].Length - 2] = GameChars.PlayerTwoChar;
-                        Console.SetCursorPosition(matrix.Length - 2, matrix[matrix.Length - 2].Length - 2);
+                        Console.SetCursorPosition(matrix[matrix.Length - 2].Length - 2, matrix.Length - 2);
                         Console.Write(GameChars.PlayerTwoChar);
 
                         matrix[matrix.Length - 2][matrix[matrix.Length - 2].Length - 3] = GameChars.EmptySpace;
@@ -81,13 +81,13 @@
                         //if (matrix[row][col] == GameChars.EmptySpace)
                         //{
                         //    matrix[row][col] = GameChars.EmptySpace;
-                        //    Console.SetCursorPosition(row, col);
+                        //    Console.SetCursorPosition(col,row);
                         //    Console.Write(GameChars.EmptySpace);
                         //}
                         //else
                         //{
                             matrix[row][col] = GameChars.DestructibleWall;
-                            Console.SetCursorPosition(row, col);
+                            Console.SetCursorPosition(col,row);
                             Console.Write(GameChars.DestructibleWall);
                         //}
                     }

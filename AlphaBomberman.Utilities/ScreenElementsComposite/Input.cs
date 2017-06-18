@@ -5,12 +5,12 @@
 
     public class Input : ScreenDecoration
     {
-        public const int Padding = 2;
-        public const int Height = 1 + 2 * Padding;
+        public static int Padding = 2;
+        public static int Height = 1 + 2 * Padding;
 
         public Input(int row, int column, string text, int inputFieldLength)
         {
-            int boxWidth = text.Length + inputFieldLength + Padding;
+            int boxWidth = text.Length + inputFieldLength + Padding*2;
 
             Add(Composer.GetBox(boxWidth,Height,row,column));
 

@@ -33,7 +33,7 @@
 
         public void Print()
         {
-            Console.SetCursorPosition(Row, Column);
+            Console.SetCursorPosition(Column, Row);
             Console.WriteLine(GameChars.BombChar);
         }
 
@@ -149,7 +149,7 @@
 
         private static void PrintBlownUpToEmpty(int row, int col)
         {
-            Console.SetCursorPosition(row, col);
+            Console.SetCursorPosition(col,row);
             Console.Write(GameChars.EmptySpace);
         }
 
