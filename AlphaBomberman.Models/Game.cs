@@ -183,6 +183,7 @@
                 case Command.ResumeGame:
                     //end game clear then go to home screen
                     PrintLevel(Player.Level);
+                    Console.CursorVisible = false;
                     Player.Move();
                     break;
             }
