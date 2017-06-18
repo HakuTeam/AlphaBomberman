@@ -72,7 +72,7 @@
         {
             string uInput;
 
-            Input inputAlert = new Input(HomeHeight / 2, HomeWidth / 2, message, 5);
+            Input inputAlert = new Input(HomeHeight / 2, HomeWidth / 2, message, 3);
 
             inputAlert.Print();
             uInput = Console.ReadLine();

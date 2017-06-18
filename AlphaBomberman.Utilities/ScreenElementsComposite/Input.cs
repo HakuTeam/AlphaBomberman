@@ -1,19 +1,23 @@
 ﻿namespace AlphaBomberman.Utilities.ScreenElementsComposite
 {
     using Composer;
+    using ScreenElements;
 
-    public class Input : Alert
+    public class Input : ScreenDecoration
     {
-        private int _fildSize;
+        public const int Padding = 2;
+        public const int Height = 1 + 2 * Padding;
 
-        public Input(int row, int column, string text, int fildSize) : base(row, column, text)
+        public Input(int row, int column, string text, int inputFieldLength)
         {
-            _fildSize = fildSize;
+            int boxWidth = text.Length + inputFieldLength + Padding;
 
-            Elements[0] = Composer.GetBox(
-                text.Length + 2 + _fildSize,
-                5,
-                row - 2, column - (text.Length / 2) - 3);
+            Add(Composer.GetBox(boxWidth,Height,row,column));
+
+            int labelColumn = column + Padding;
+            int labelRow = row + Padding;
+
+            Add(new Label(labelRow, labelColumn, text));
         }
     }
 }

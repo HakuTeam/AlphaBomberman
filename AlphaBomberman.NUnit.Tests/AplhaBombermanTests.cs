@@ -2,11 +2,13 @@
 
 namespace AlphaBomberman.NUnit.Tests
 {
+    using System;
     using Models;
+    using Utilities.ScreenElementsComposite;
 
     [TestFixture]
     [Author("Zlatyo Uzunov")]
-    public class TestClass
+    public class AplhaBombermanTests
     {
         [Test]
         [Author("Zlatyo Uzunov")]
@@ -74,6 +76,25 @@ namespace AlphaBomberman.NUnit.Tests
 
             //Assert
             Assert.AreEqual(endRow, player.Row);
+        }
+
+        [Test]
+        [Author("Zlatyo Uzunov")]
+        [Property("Interface Tests", 1)]
+        public void InputNoNegativePositions()
+        {
+            //Arrange player on first valid row;
+            int inputRow = -1;
+            int inputColumn = -1;
+
+            //Act
+            void CreateInput()
+            {
+                var userInput = new Input(inputRow, inputColumn, "123", 2);
+            }
+
+            //Assert
+            Assert.Throws<Exception>(CreateInput);
         }
     }
 }

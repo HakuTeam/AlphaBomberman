@@ -5,28 +5,30 @@
     using Composer;
 
     /// <summary>
-    /// User to display messages to the user. It contains
+    /// Useed to display messages to the user. It contains
     /// a text message surrouded with a frame.
     /// </summary>
     /// <remarks>
     /// The method Celar() removes it from the screen.
+    /// Currently supports only one row of text.
     /// </remarks>
     public class Alert : ScreenDecoration
     {
-        // TODO - This class had some problems with long text, resolve them!
+        private const int Padding = 2;
+
+        //one row of text
+        private const int Height = 1 + 2 * Padding;
+
         public Alert(int row, int column, string text)
         {
-            Elements.Add(Composer.GetBox(
-                text.Length + 6,
-                5,
-                row - 2, column - (text.Length / 2) - 3));
+            int boxWidth = text.Length + Padding * 2;
 
-            Elements.Add(
-                new Label(
-                    row,
-                    column - (text.Length / 2),
-                    text)
-            );
+            Add(Composer.GetBox(boxWidth,Height,row,column));
+
+            int labelColumn = column + Padding;
+            int labelRow = row + Padding;
+
+            Add(new Label(labelRow,labelColumn,text));
         }
 
         public void Clear()
