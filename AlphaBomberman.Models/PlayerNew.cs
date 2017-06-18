@@ -6,7 +6,7 @@
         private int _rowLimit;
         private int _colLimit;
 
-        public PlayerNew(int row, int column, int rowLimit = 44, int colLimit = 100):base(row,column)
+        public PlayerNew(int row, int column, int rowLimit = 39, int colLimit = 100):base(row,column)
         {
             _rowLimit = rowLimit;
             _colLimit = colLimit;
