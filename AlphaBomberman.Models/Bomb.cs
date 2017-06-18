@@ -42,10 +42,6 @@
             //Blow UP
             for (int explodeRow = Row - 1; explodeRow >= Row - Range; explodeRow--)
             {
-                if (!IsInMatrix(explodeRow, Column, Level.Matrix))
-                {
-                    break;
-                }
                 if (Level.Matrix[explodeRow][Column] == GameChars.IndestructibleWall)
                 {
                     break;
@@ -57,8 +53,7 @@
                     break;
                 }
                 if (
-                    Level.Matrix[explodeRow][Column] == GameChars.PlayerOneChar 
-                    || Level.Matrix[explodeRow][Column] == GameChars.PlayerTwoChar
+                    Level.Matrix[explodeRow][Column] == GameChars.PlayerOneChar || Level.Matrix[explodeRow][Column] == GameChars.PlayerTwoChar
                     )
                 {
                     Level.Matrix[explodeRow][Column] = GameChars.EmptySpace;
@@ -74,10 +69,6 @@
             //Blow Down
             for (int explodeRow = Row; explodeRow <= Row + Range; explodeRow++)
             {
-                if (!IsInMatrix(explodeRow, Column, Level.Matrix))
-                {
-                    break;
-                }
                 if (Level.Matrix[explodeRow][Column] == GameChars.IndestructibleWall)
                 {
                     break;
@@ -89,8 +80,7 @@
                     break;
                 }
                 if (
-                    Level.Matrix[explodeRow][Column] == GameChars.PlayerOneChar 
-                    || Level.Matrix[explodeRow][Column] == GameChars.PlayerTwoChar
+                    Level.Matrix[explodeRow][Column] == GameChars.PlayerOneChar || Level.Matrix[explodeRow][Column] == GameChars.PlayerTwoChar
                     )
                 {
                     Level.Matrix[explodeRow][Column] = GameChars.EmptySpace;
@@ -106,10 +96,6 @@
             //Blow Right
             for (int explodeColumn = Column; explodeColumn <= Column + Range; explodeColumn++)
             {
-                if (!IsInMatrix(explodeColumn, Row, Level.Matrix))
-                {
-                    break;
-                }
                 if (Level.Matrix[Row][explodeColumn] == GameChars.IndestructibleWall)
                 {
                     break;
@@ -121,8 +107,7 @@
                     break;
                 }
                 if (
-                    Level.Matrix[Row][explodeColumn] == GameChars.PlayerOneChar 
-                    || Level.Matrix[Row][explodeColumn] == GameChars.PlayerTwoChar
+                    Level.Matrix[Row][explodeColumn] == GameChars.PlayerOneChar || Level.Matrix[Row][explodeColumn] == GameChars.PlayerTwoChar
                     )
                 {
                     Level.Matrix[Row][explodeColumn] = GameChars.EmptySpace;
@@ -138,10 +123,6 @@
             //Blow Left
             for (int explodeColumn = Column; explodeColumn >= Column-Range; explodeColumn--)
             {
-                if (!IsInMatrix(explodeColumn, Row, Level.Matrix))
-                {
-                    break;
-                }
                 if (Level.Matrix[Row][explodeColumn] == GameChars.IndestructibleWall)
                 {
                     break;
@@ -170,22 +151,5 @@
             Console.SetCursorPosition(col,row);
             Console.Write(GameChars.EmptySpace);
         }
-
-        private static bool IsInMatrix(int currentRow, int currentCol, char[][] Level)
-        {
-            if (
-                currentRow >= 0 
-                && currentRow < Level.Length 
-                && currentCol >= 0 
-                && currentCol < Level[currentRow].Length
-                )
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        //Not quite sure whether to put it with the mobs or the player so I decided both 
     }
 }

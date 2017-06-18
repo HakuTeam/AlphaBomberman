@@ -81,13 +81,13 @@
                         if (matrix[row][col] == GameChars.EmptySpace)
                         {
                             matrix[row][col] = GameChars.EmptySpace;
-                            Console.SetCursorPosition(col,row);
+                            Console.SetCursorPosition(col, row);
                             Console.Write(GameChars.EmptySpace);
                         }
                         else
                         {
                             matrix[row][col] = GameChars.DestructibleWall;
-                            Console.SetCursorPosition(col,row);
+                            Console.SetCursorPosition(col, row);
                             Console.Write(GameChars.DestructibleWall);
                         }
                     }
