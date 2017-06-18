@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Timers;
+    using Utilities.Ennumetation;
 
     public class Player
     {
@@ -31,9 +32,7 @@
                 PlayerTwoMove(keyInfo);
             }
 
-            Console.Clear();
-            Console.WriteLine("Exit successful!");
-            Environment.Exit(0);
+            Game.ExecCommand(Command.ExitMenu);
         }
 
         private static void PlayerOneMove(ConsoleKeyInfo keyInfo)

@@ -4,6 +4,8 @@
     using AlphaBomberman.Utilities.Ennumetation;
     using AlphaBomberman.Utilities.Input;
     using AlphaBomberman.Utilities.ScreenElementsComposite;
+    using Utilities.Composer;
+    using Utilities.ScreenElements;
 
     public class Game
     {
@@ -26,7 +28,7 @@
             homeMenu.Print();
 
 
-            while (true)
+            while (homeMenu.IsShown)
             {
                 // Keayboard funtionality
                 var keyInput = new KeyboardInput();
@@ -44,6 +46,43 @@
                     case Command.Execute:
                         Command menuCommand = (homeMenu.GetSelected()).Command;
                         ExecCommand(menuCommand);
+                        homeMenu.IsShown = false;
+                        break;
+                }
+            }
+        }
+
+        public static void ShowExitMenu(int width, int height)
+        {
+            //create menu
+            var menu = new Menu(width, height);
+
+            //add menu items
+            menu.Add("Resume Game", Command.ResumeGame);
+            menu.Add("Home Screen", Command.HomeScreen);
+            menu.Add("Exit Game", Command.Exit);
+            menu.Print();
+
+
+            while (menu.IsShown)
+            {
+                // Keayboard funtionality
+                var keyInput = new KeyboardInput();
+                var command = keyInput.Listen();
+                switch (command)
+                {
+                    case Command.MoveUp:
+                        menu.MoveUp();
+                        menu.Print();
+                        break;
+                    case Command.MoveDown:
+                        menu.MoveDown();
+                        menu.Print();
+                        break;
+                    case Command.Execute:
+                        Command menuCommand = (menu.GetSelected()).Command;
+                        ExecCommand(menuCommand);
+                        menu.IsShown = false;
                         break;
                 }
             }
@@ -134,9 +173,26 @@
                 case Command.HomeScreen:
                     //end game clear then go to home screen
                     Console.Clear();
-                    RunHomeScreen(GameWidth, GameHeight);
+                    RunHomeScreen(HomeWidth, HomeHeight);
+                    break;
+                case Command.ExitMenu:
+                    //end game clear then go to home screen
+                    Console.Clear();
+                    ShowExitMenu(HomeWidth, HomeHeight);
+                    break;
+                case Command.ResumeGame:
+                    //end game clear then go to home screen
+                    PrintLevel(Player.Level);
+                    Player.Move();
                     break;
             }
+        }
+
+        public static void PrintLevel(LevelModel level)
+        {
+            var levelPrintable = Composer.Compose(level.Matrix);
+            var levelState = new StaticElement(levelPrintable);
+            levelState.Print();
         }
 
         static void RestConsoleColors()

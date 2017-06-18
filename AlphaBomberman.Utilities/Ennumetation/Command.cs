@@ -17,6 +17,8 @@
         StartGame,
         Options,
         HomeScreen,
-        Exit
+        Exit,
+        ExitMenu,
+        ResumeGame
     }
 }

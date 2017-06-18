@@ -18,11 +18,13 @@
     {
         private int _selected;
         private readonly StaticElement _menuFrame;
+        public bool IsShown;
 
         public Menu(int width, int height): base()
         {
             var frame = Composer.GetStringBox(width, height);
             _menuFrame = new StaticElement(frame,ConsoleColor.Green);
+            IsShown = false;
         }
 
         public void Add(int x, int y, string content, Command command)
@@ -84,8 +86,8 @@
                 {
                     Elements[i].Print();
                 }
-
             }
+            IsShown = true;
         }
     }
 }
