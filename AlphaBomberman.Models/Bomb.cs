@@ -158,8 +158,8 @@
                 }
             }
 
-            this.Level.Matrix[Row][Column] = GameChars.EmptySpace;
-            Console.SetCursorPosition(Column,Row);
+            this.Level.Matrix[this.Row][this.Column] = GameChars.EmptySpace;
+            Console.SetCursorPosition(this.Column,this.Row);
             Console.Write(GameChars.EmptySpace);
         }
 
@@ -183,11 +183,6 @@
                     }
                 }
             }
-
-            //Remove the bomb from the matrix
-            Level.Matrix[Row][Column] = GameChars.EmptySpace;
-            Console.SetCursorPosition(Column,Row);
-            Console.Write(GameChars.EmptySpace);
         }
 
         private static void PrintBlownUpToEmpty(int row, int col)
