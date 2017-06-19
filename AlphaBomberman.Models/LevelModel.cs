@@ -7,6 +7,7 @@
         public char[][] Matrix { get; }
 
         public int Width { get; set; }
+
         public int Height { get; set; }
 
         public char[][] DrawMatrix()
@@ -35,14 +36,14 @@
                     {
                         //matrix[row][col] = Wall;
                         matrix[row][col] = GameChars.IndestructibleWall;
-                        Console.SetCursorPosition(col,row);
+                        Console.SetCursorPosition(col, row);
                         Console.Write(GameChars.IndestructibleWall);
                     }
                     else if (row % 2 == 0 && col % 2 == 0)
                     {
                         //matrix[row][col] = Wall;
                         matrix[row][col] = GameChars.IndestructibleWall;
-                        Console.SetCursorPosition(col,row);
+                        Console.SetCursorPosition(col, row);
                         Console.Write(GameChars.IndestructibleWall);
                     }
                     else if (secondPlayerPositionUp || secondPlayerPositionleft || secondPlayerPosition)
@@ -58,7 +59,6 @@
                         matrix[matrix.Length - 3][matrix[matrix.Length - 2].Length - 2] = GameChars.EmptySpace;
                         Console.SetCursorPosition(matrix[matrix.Length - 2].Length - 2, matrix.Length - 3);
                         Console.Write(GameChars.EmptySpace);
-
                     }
                     else if (firstPlayerPosition || firstPlayerPositionDown || firstPlayerPositionRight)
                     {

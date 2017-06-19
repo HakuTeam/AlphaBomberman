@@ -11,7 +11,8 @@
         public static int PlayerOneColumn;
         public static int PlayerTwoRow;
         public static int PlayerTwoColumn;
-        public static List<Bomb> Bombs = new List<Bomb>();
+        public static bool PlayerOneIsAlive = true;
+        public static bool PlayerTwoIsAlive = true;
 
         public Player(LevelModel level)
         {
@@ -29,7 +30,11 @@
             {
                 PlayerOneMove(keyInfo);
                 PlayerTwoMove(keyInfo);
-                CheckBombs();
+
+                if (!PlayerOneIsAlive || !PlayerTwoIsAlive)
+                {
+                    break;
+                }
             }
 
             Game.ExecCommand(Command.ExitMenu);
@@ -94,20 +99,8 @@
         private static void SetBomb(int row, int column)
         {
             var bomb = new Bomb(row, column, Level, 3);
-            Bombs.Add(bomb);
+            Bomb.Bombs.Add(bomb);
             bomb.Print();
-        }
-
-        private static void CheckBombs()
-        {
-            for (int i = 0; i < Bombs.Count; i++)
-            {
-                if (Bombs[i].Timer.ElapsedMilliseconds >= Bombs[i].Clock)
-                {
-                    Bombs[i].Explode();
-                    Bombs.Remove(Bombs[i]);
-                }
-            }
         }
 
         private static void MoveRight(char[][] matrix, int row, int col, char playerChar)

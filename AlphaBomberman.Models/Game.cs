@@ -6,14 +6,15 @@
     using Utilities.ScreenElementsComposite;
     using Utilities.Composer;
     using Utilities.ScreenElements;
+    using System.Threading.Tasks;
 
     public class Game
     {
-        public static int GameWidth = 17;
-        public static int GameHeight = 11;
-
         public const int HomeWidth = 20;
         public const int HomeHeight = 10;
+
+        public static int GameWidth = 17;
+        public static int GameHeight = 11;
 
         public static void RunHomeScreen(int width, int height)
         {
@@ -97,14 +98,14 @@
         {
             Console.CursorVisible = false;
 
-            Console.WindowWidth = (Console.LargestWindowWidth/3)*2;
+            Console.WindowWidth = (Console.LargestWindowWidth / 3) * 2;
 
-            Console.WindowHeight = Console.LargestWindowHeight-5;
+            Console.WindowHeight = Console.LargestWindowHeight - 5;
             Console.BufferWidth = (Console.LargestWindowWidth / 3) * 2;
             Console.BufferHeight = Console.LargestWindowHeight;
 
             Console.Clear();
-            Console.SetCursorPosition(1,1);
+            Console.SetCursorPosition(1, 1);
         }
 
         private static int GetUserIntInput(string message, int inputLength)
@@ -128,7 +129,7 @@
                 return 21;
             }
 
-            if(uInput.Length > inputLength)
+            if (uInput.Length > inputLength)
             {
                 uInput = uInput.Substring(0, inputLength);
             }
@@ -141,7 +142,7 @@
             switch (command)
             {
                 case Command.StartGame:
-                    var userIntInput = GetUserIntInput("Level width:",3);
+                    var userIntInput = GetUserIntInput("Level width:", 3);
 
                     if (userIntInput > Console.WindowWidth)
                     {
@@ -152,7 +153,7 @@
                         GameWidth = userIntInput;
                     }
 
-                    userIntInput = GetUserIntInput("Level height:",3);
+                    userIntInput = GetUserIntInput("Level height:", 3);
                     if (userIntInput > Console.WindowHeight)
                     {
                         GameHeight = Console.WindowHeight;
@@ -161,9 +162,12 @@
                     {
                         GameHeight = userIntInput;
                     }
+
                     Console.Clear();
                     var player = new Player(new LevelModel(GameWidth, GameHeight));
-                    Player.Move();
+                    Player.PlayerOneIsAlive = true;
+                    Player.PlayerTwoIsAlive = true;
+                    Parallel.Invoke(() => Bomb.CheckBombs(), () => Player.Move());
                     break;
                 case Command.Exit:
                     Console.Clear();
