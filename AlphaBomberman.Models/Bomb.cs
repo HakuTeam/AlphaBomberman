@@ -13,9 +13,7 @@
             this.Range = range;
             this.Timer = new Stopwatch();
             this.Timer.Start();
-            this.Level.Matrix[Row][Column] = GameChars.BombChar;
-            this.Print();
-            this.Clock = 200; //miliseconds to boom
+            this.Clock = 5000; //miliseconds to boom
         }
 
         public int Row { get; set; }
@@ -33,6 +31,7 @@
 
         public void Print()
         {
+            Level.Matrix[Row][Column] = GameChars.BombChar;
             Console.SetCursorPosition(Column, Row);
             Console.WriteLine(GameChars.BombChar);
         }
@@ -163,6 +162,11 @@
                 //    //BombExplosion.Explosion(rowIndex, Column);
                 //}
             }
+
+            //Remove the bomb from the matrix
+            Level.Matrix[Row][Column] = GameChars.EmptySpace;
+            Console.SetCursorPosition(Column,Row);
+            Console.Write(GameChars.EmptySpace);
         }
 
         private static void PrintBlownUpToEmpty(int row, int col)

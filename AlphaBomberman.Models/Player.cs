@@ -190,10 +190,16 @@
         {
             for (int i = 0; i < Bombs.Count; i++)
             {
-                if (Bombs[i].Timer.ElapsedMilliseconds >= Bombs[i].Clock)
+                var bomb = Bombs[i];
+
+                if (Level.Matrix[bomb.Row][bomb.Column] != GameChars.BombChar)
                 {
-                    Bombs[i].Explode();
-                    Bombs.Remove(Bombs[i]);
+                    bomb.Print();
+                }
+                if (bomb.Timer.ElapsedMilliseconds >= bomb.Clock)
+                {
+                    bomb.Explode();
+                    Bombs.Remove(bomb);
                 }
             }
         }
