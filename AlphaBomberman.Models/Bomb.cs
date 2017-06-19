@@ -20,9 +20,7 @@
             this.Range = range;
             this.Timer = new Stopwatch();
             this.Timer.Start();
-            this.Level.Matrix[this.Row][this.Column] = GameChars.BombChar;
-            this.Print();
-            this.Clock = 500; //miliseconds to boom
+            this.Clock = 5000; //miliseconds to boom
         }
 
         public int Power;
@@ -41,6 +39,7 @@
 
         public void Print()
         {
+            this.Level.Matrix[Row][Column] = GameChars.BombChar;
             Console.SetCursorPosition(this.Column, this.Row);
             Console.WriteLine(GameChars.BombChar);
         }
@@ -158,6 +157,10 @@
                     Player.PlayerTwoIsAlive = false;
                 }
             }
+
+            this.Level.Matrix[Row][Column] = GameChars.EmptySpace;
+            Console.SetCursorPosition(Column,Row);
+            Console.Write(GameChars.EmptySpace);
         }
 
         public static void CheckBombs()
@@ -166,10 +169,17 @@
             {
                 for (int i = 0; i < Bombs.Count; i++)
                 {
-                    if (Bombs[i].Timer.ElapsedMilliseconds >= Bombs[i].Clock)
+                    Bomb bomb = Bombs[i];
+
+                    if (bomb.Level.Matrix[bomb.Row][bomb.Column] == GameChars.EmptySpace)
                     {
-                        Bombs[i].Explode();
-                        Bombs.Remove(Bombs[i]);
+                        bomb.Print();
+                    }
+
+                    if (bomb.Timer.ElapsedMilliseconds >= bomb.Clock)
+                    {
+                        bomb.Explode();
+                        Bombs.Remove(bomb);
                     }
                 }
             }
