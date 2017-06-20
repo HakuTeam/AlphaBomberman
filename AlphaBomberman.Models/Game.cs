@@ -6,7 +6,6 @@
     using Utilities.ScreenElementsComposite;
     using Utilities.Composer;
     using Utilities.ScreenElements;
-    using System.Threading.Tasks;
 
     public class Game
     {
