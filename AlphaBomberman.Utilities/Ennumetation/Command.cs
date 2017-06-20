@@ -19,6 +19,7 @@
         HomeScreen,
         Exit,
         ExitMenu,
+        GameOverScreen,
         ResumeGame
     }
 }

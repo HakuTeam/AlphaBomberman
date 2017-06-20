@@ -53,6 +53,65 @@
             }
         }
 
+        public static void GameOverScreen(int width, int height)
+        {
+            var gameOverScreen = new Menu(width, height);
+
+            gameOverScreen.Add("Restart?", Command.HomeScreen);
+        }
+
+
+        private static void ShowGameOverScreen(int homeWidth, int homeHeight)
+        {
+            var menu = new Menu(homeWidth, homeHeight);
+
+            menu.Add("Restart?", Command.HomeScreen);
+            menu.Print();
+            PrintGameOverScreen();
+
+            while (menu.IsShown)
+            {
+
+
+                var keyInput = new KeyboardInput();
+                var command = keyInput.Listen();
+                switch (command)
+                {
+                    case Command.Execute:
+                        Command menuCommand = (menu.GetSelected()).Command;
+                        ExecCommand(menuCommand);
+                        menu.IsShown = false;
+                        break;
+                }
+            }
+        }
+
+        private static void PrintGameOverScreen()
+        {
+            Console.WriteLine();
+            Console.SetCursorPosition(3, 3);
+            if (Player.PlayerOneIsAlive)
+            {
+                Console.WriteLine("P won the beer");
+            }
+            else
+            {
+                Console.WriteLine("K won the beer");
+            }
+
+            Console.WriteLine();
+            Console.SetCursorPosition(3, 4);
+            Console.WriteLine("    oOOOOOo");
+            Console.SetCursorPosition(3, 5);
+            Console.WriteLine("   ,|    oO");
+            Console.SetCursorPosition(3, 6);
+            Console.WriteLine("  //|     |");
+            Console.SetCursorPosition(3, 7);
+            Console.WriteLine("  \\\\|     |");
+            Console.SetCursorPosition(3, 8);
+            Console.WriteLine("    `-----`");
+        }
+
         public static void ShowExitMenu(int width, int height)
         {
             //create menu
@@ -184,6 +243,11 @@
                     Console.Clear();
                     ShowExitMenu(HomeWidth, HomeHeight);
                     break;
+                case Command.GameOverScreen:
+                    //end game clear then go to home screen
+                    Console.Clear();
+                    ShowGameOverScreen(HomeWidth, HomeHeight);
+                    break;
                 case Command.ResumeGame:
                     //end game clear then go to home screen
                     PrintLevel(Player.Level);
@@ -200,7 +264,7 @@
             levelState.Print();
         }
 
-        static void RestConsoleColors()
+        private static void RestConsoleColors()
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;

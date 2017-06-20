@@ -35,11 +35,16 @@
 
                 if (!PlayerOneIsAlive || !PlayerTwoIsAlive)
                 {
+                    Game.ExecCommand(Command.GameOverScreen);
                     break;
                 }
             }
 
-            Game.ExecCommand(Command.ExitMenu);
+            if (PlayerOneIsAlive && PlayerTwoIsAlive)
+            {
+                Game.ExecCommand(Command.ExitMenu);
+            }
+            
         }
 
         private static void PlayerOneMove(ConsoleKeyInfo keyInfo)
