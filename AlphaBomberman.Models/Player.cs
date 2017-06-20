@@ -31,6 +31,7 @@
                 Bomb.CheckBombs();
                 PlayerOneMove(keyInfo);
                 PlayerTwoMove(keyInfo);
+                Bomb.CheckBombs();
 
                 if (!PlayerOneIsAlive || !PlayerTwoIsAlive)
                 {
