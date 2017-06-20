@@ -167,7 +167,7 @@
                     var player = new Player(new LevelModel(GameWidth, GameHeight));
                     Player.PlayerOneIsAlive = true;
                     Player.PlayerTwoIsAlive = true;
-                    Parallel.Invoke(() => Bomb.CheckBombs(), () => Player.Move());
+                    Player.Move();
                     break;
                 case Command.Exit:
                     Console.Clear();

@@ -28,6 +28,7 @@
             ConsoleKeyInfo keyInfo;
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
+                Bomb.CheckBombs();
                 PlayerOneMove(keyInfo);
                 PlayerTwoMove(keyInfo);
 
