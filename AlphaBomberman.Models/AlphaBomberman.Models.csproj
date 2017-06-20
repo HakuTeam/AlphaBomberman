@@ -51,7 +51,6 @@
     <Compile Include="GameChars.cs" />
     <Compile Include="LevelModel.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="PlayerNew.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

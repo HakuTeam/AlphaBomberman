@@ -1,14 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaBomberman", "AlphaBomberman\AlphaBomberman.csproj", "{93CE1574-A78D-4D92-859E-E3F1041E44DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8F89C015-3F40-424E-A4D5-FCA25B3F2925}"
 	ProjectSection(SolutionItems) = preProject
+		game-30x15.png = game-30x15.png
 		LICENCE.txt = LICENCE.txt
 		README.md = README.md
+		start-screen.png = start-screen.png
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaBomberman.Models", "AlphaBomberman.Models\AlphaBomberman.Models.csproj", "{AEC0D57E-9F6F-4ED9-B19F-2A40C3A61991}"
