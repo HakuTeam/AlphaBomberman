@@ -263,7 +263,7 @@
             levelState.Print();
         }
 
-        private static void RestConsoleColors()
+        public static void RestConsoleColors()
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;

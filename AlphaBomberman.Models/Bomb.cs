@@ -7,6 +7,8 @@
     public class Bomb
     {
         public static List<Bomb> Bombs = new List<Bomb>();
+
+        private char _bombChar;
         //public static bool playerOneBombReady = true;
         //public static bool playerTwoBombReady = true;
         //public static Bomb playerOneBomb;
@@ -21,6 +23,7 @@
             this.Timer = new Stopwatch();
             this.Timer.Start();
             this.Clock = 1000; //miliseconds to boom
+            this._bombChar = GameChars.BombChar;
         }
 
         public int Power;
@@ -39,9 +42,20 @@
 
         public void Print()
         {
-            this.Level.Matrix[Row][Column] = GameChars.BombChar;
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            this.Level.Matrix[Row][Column] = this._bombChar;
             Console.SetCursorPosition(this.Column, this.Row);
-            Console.WriteLine(GameChars.BombChar);
+            Console.WriteLine(this._bombChar);
+            Game.RestConsoleColors();
+
+        }
+
+        public void PrintSet(char playerChar)
+        {
+            this._bombChar = playerChar;
+            this.Print();
+            this._bombChar = GameChars.BombChar;
         }
 
         public void Explode()

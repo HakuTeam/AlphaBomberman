@@ -1,7 +1,6 @@
 ﻿namespace AlphaBomberman.Models
 {
     using System;
-    using System.Collections.Generic;
     using Utilities.Ennumetation;
 
     public class Player
@@ -71,7 +70,7 @@
             }
             else if (keyInfo.Key == ConsoleKey.NumPad0)
             {
-                SetBomb(PlayerOneRow, PlayerOneColumn);
+                SetBomb(PlayerOneRow, PlayerOneColumn, GameChars.PlayerOneChar);
             }
         }
 
@@ -99,15 +98,15 @@
             }
             else if (keyInfo.Key == ConsoleKey.Spacebar/* bombs left and player is not dead */)
             {
-                SetBomb(PlayerTwoRow, PlayerTwoColumn);
+                SetBomb(PlayerTwoRow, PlayerTwoColumn, GameChars.PlayerTwoChar);
             }
         }
 
-        private static void SetBomb(int row, int column)
+        private static void SetBomb(int row, int column, char playerChar)
         {
             var bomb = new Bomb(row, column, Level, 3);
             Bomb.Bombs.Add(bomb);
-            bomb.Print();
+            bomb.PrintSet(playerChar);
         }
 
         private static void MoveRight(char[][] matrix, int row, int col, char playerChar)
