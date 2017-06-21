@@ -35,16 +35,20 @@
                     if (row == 0 || row == matrix.Length - 1 || col == 0 || col == matrix[row].Length - 1) // Print matrix borders;
                     {
                         //matrix[row][col] = Wall;
+                        Console.ForegroundColor = GameColors.IndestructibleWall;
                         matrix[row][col] = GameChars.IndestructibleWall;
                         Console.SetCursorPosition(col, row);
                         Console.Write(GameChars.IndestructibleWall);
+                        Game.RestConsoleColors();
                     }
                     else if (row % 2 == 0 && col % 2 == 0)
                     {
                         //matrix[row][col] = Wall;
+                        Console.ForegroundColor = GameColors.IndestructibleWall;
                         matrix[row][col] = GameChars.IndestructibleWall;
                         Console.SetCursorPosition(col, row);
                         Console.Write(GameChars.IndestructibleWall);
+                        Game.RestConsoleColors();
                     }
                     else if (secondPlayerPositionUp || secondPlayerPositionleft || secondPlayerPosition)
                     {
@@ -94,9 +98,11 @@
                         }
                         else
                         {
+                            Console.ForegroundColor = GameColors.DestructibleWall;
                             matrix[row][col] = GameChars.DestructibleWall;
                             Console.SetCursorPosition(col, row);
                             Console.Write(GameChars.DestructibleWall);
+                            Game.RestConsoleColors();
                         }
                     }
                 }

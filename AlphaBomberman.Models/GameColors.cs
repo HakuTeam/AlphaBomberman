@@ -31,6 +31,8 @@
 
         public const ConsoleColor MenuFrame = ConsoleColor.Green;
 
-
+        //walls
+        public const ConsoleColor IndestructibleWall = ConsoleColor.DarkYellow;
+        public const ConsoleColor DestructibleWall = ConsoleColor.DarkRed;
     }
 }
