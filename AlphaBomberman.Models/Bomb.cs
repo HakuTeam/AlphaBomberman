@@ -163,6 +163,15 @@
                     Player.PlayerTwoIsAlive = false;
                 }
             }
+            //Blow bomb position
+            if (this.Row == Player.PlayerTwoRow && this.Column == Player.PlayerTwoColumn)
+            {
+                Player.PlayerTwoIsAlive = false;
+            }
+            if (this.Row == Player.PlayerOneRow && this.Column == Player.PlayerOneColumn)
+            {
+                Player.PlayerOneIsAlive = false;
+            }
 
             this.Level.Matrix[this.Row][this.Column] = GameChars.EmptySpace;
             Console.SetCursorPosition(this.Column, this.Row);

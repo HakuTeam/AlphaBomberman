@@ -38,7 +38,6 @@
                     break;
                 }
             }
-
             if (PlayerOneIsAlive && PlayerTwoIsAlive)
             {
                 Game.ExecCommand(Command.ExitMenu);
