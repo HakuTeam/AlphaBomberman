@@ -173,6 +173,8 @@
                 Player.PlayerOneIsAlive = false;
             }
 
+           
+
             this.Level.Matrix[this.Row][this.Column] = GameChars.EmptySpace;
             Console.SetCursorPosition(this.Column, this.Row);
             Console.Write(GameChars.EmptySpace);
@@ -191,6 +193,9 @@
 
                 if (bomb.Timer.ElapsedMilliseconds >= bomb.Clock)
                 {
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"../../Sounds/Bomb1.wav");
+                    player.Play();
+
                     bomb.Explode();
                     Bombs.Remove(bomb);
                 }

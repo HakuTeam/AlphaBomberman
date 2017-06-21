@@ -60,6 +60,9 @@
       <Name>AlphaBomberman.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Sounds\Bomb1.wav" />
+    <Content Include="Sounds\Home-screen.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
