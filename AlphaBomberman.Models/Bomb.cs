@@ -22,7 +22,7 @@
             this.Range = range;
             this.Timer = new Stopwatch();
             this.Timer.Start();
-            this.Clock = 1500; //miliseconds to boom
+            this.Clock = 1500000; //miliseconds to boom
             this._bombChar = GameChars.BombChar;
         }
 

@@ -1,6 +1,7 @@
 ﻿namespace AlphaBomberman.Models
 {
     using System;
+    using System.Threading;
     using Utilities.Ennumetation;
     using Utilities.Input;
     using Utilities.ScreenElementsComposite;
@@ -67,6 +68,23 @@
             gameOverScreen.Add("Restart?", Command.HomeScreen);
         }
 
+        public static ConsoleKey Tick()
+        {
+            ConsoleKey result;
+
+            DateTime beginWait = DateTime.Now;
+            while (!Console.KeyAvailable && DateTime.Now.Subtract(beginWait).TotalSeconds < 5)
+                Thread.Sleep(250);
+
+            if (!Console.KeyAvailable)
+                result = ConsoleKey.T;
+            else
+            {
+                result = Console.ReadKey().Key;
+
+            }
+            return result;
+        }
 
         private static void ShowGameOverScreen(int homeWidth, int homeHeight)
         {
