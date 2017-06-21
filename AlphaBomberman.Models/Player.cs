@@ -28,7 +28,6 @@
             while (currentKey != ConsoleKey.Escape)
             {
                 currentKey = Game.Tick();
-                Bomb.CheckBombs();
                 PlayerOneMove(currentKey);
                 PlayerTwoMove(currentKey);
                 Bomb.CheckBombs();

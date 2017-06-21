@@ -10,13 +10,11 @@
 
     public class Game
     {
-        public const int HomeWidth = 20;
-        public const int HomeHeight = 10;
 
-        public static int GameWidth = 17;
-        public static int GameHeight = 11;
-        public static System.Media.SoundPlayer music = new System.Media.SoundPlayer(@"../../Sounds/Home-screen.wav");
-       
+        public static int GameWidth = GameSettings.GameWidthDefault;
+        public static int GameHeight = GameSettings.GameHeightDefault;
+        public static System.Media.SoundPlayer music = new System.Media.SoundPlayer(GameSettings.HomeMusic);
+
 
         public static void RunHomeScreen(int width, int height)
         {
@@ -25,13 +23,13 @@
 
             //create menu
             var homeMenu = new Menu(
-                width, 
-                height,
-                GameColors.DefaultForeground,
-                GameColors.DefaultBackground,
-                GameColors.MenuFrame,
-                GameColors.MenuSelectedForeground,
-                GameColors.MenuSelectedBackground
+                width: width,
+                height: height,
+                colorForeground: GameColors.DefaultForeground,
+                colorBackground: GameColors.DefaultBackground,
+                colorFrame: GameColors.MenuFrame,
+                colorSelectedForeground: GameColors.MenuSelectedForeground,
+                colorSelectedBackground: GameColors.MenuSelectedBackground
                 );
 
             //add menu items
@@ -76,15 +74,14 @@
             ConsoleKey result;
 
             DateTime beginWait = DateTime.Now;
-            while (!Console.KeyAvailable && DateTime.Now.Subtract(beginWait).TotalSeconds < 5)
+            while (!Console.KeyAvailable && DateTime.Now.Subtract(beginWait).TotalMilliseconds < GameSettings.BombClock)
                 Thread.Sleep(250);
 
             if (!Console.KeyAvailable)
                 result = ConsoleKey.T;
             else
             {
-                result = Console.ReadKey().Key;
-
+                result = Console.ReadKey(true).Key;
             }
             return result;
         }
@@ -99,8 +96,6 @@
 
             while (menu.IsShown)
             {
-
-
                 var keyInput = new KeyboardInput();
                 var command = keyInput.Listen();
                 switch (command)
@@ -187,9 +182,9 @@
 
             Console.WindowWidth = (Console.LargestWindowWidth / 3) * 2;
 
-            Console.WindowHeight = Console.LargestWindowHeight - 5;
+            Console.WindowHeight = Console.LargestWindowHeight - 10;
             Console.BufferWidth = (Console.LargestWindowWidth / 3) * 2;
-            Console.BufferHeight = Console.LargestWindowHeight;
+            Console.BufferHeight = Console.LargestWindowHeight - 10;
 
             Console.Clear();
             Console.SetCursorPosition(1, 1);
@@ -197,7 +192,7 @@
 
         private static int GetUserIntInput(string message, int inputLength)
         {
-            int firstRow = HomeHeight / 2 - Input.Padding;
+            int firstRow = GameSettings.HomeHeight / 2 - Input.Padding;
             int firstColumn = 0;
             int result;
 
@@ -265,17 +260,17 @@
                 case Command.HomeScreen:
                     //end game clear then go to home screen
                     Console.Clear();
-                    RunHomeScreen(HomeWidth, HomeHeight);
+                    RunHomeScreen(GameSettings.HomeWidth, GameSettings.HomeHeight);
                     break;
                 case Command.ExitMenu:
                     //end game clear then go to home screen
                     Console.Clear();
-                    ShowExitMenu(HomeWidth, HomeHeight);
+                    ShowExitMenu(GameSettings.HomeWidth, GameSettings.HomeHeight);
                     break;
                 case Command.GameOverScreen:
                     //end game clear then go to home screen
                     Console.Clear();
-                    ShowGameOverScreen(HomeWidth, HomeHeight);
+                    ShowGameOverScreen(GameSettings.HomeWidth, GameSettings.HomeHeight);
                     break;
                 case Command.ResumeGame:
                     //end game clear then go to home screen

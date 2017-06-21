@@ -3,7 +3,6 @@
 namespace AlphaBomberman.NUnit.Tests
 {
     using System;
-    using Models;
     using Utilities.ScreenElementsComposite;
 
     [TestFixture]
@@ -95,6 +94,52 @@ namespace AlphaBomberman.NUnit.Tests
 
             //Assert
             Assert.Throws<Exception>(CreateInput);
+        }
+    }
+
+    public class PlayerNew
+    {
+        private int endRow;
+        private int limitColumn;
+
+        public PlayerNew(int row, int column)
+        {
+            this.Row = row;
+            this.Column = column;
+        }
+
+        public PlayerNew(int row, int column, int endRow) : this(row, column)
+        {
+            this.endRow = endRow;
+        }
+
+        public PlayerNew(int row, int column, int endRow, int limitColumn) : this(row, column, endRow)
+        {
+            this.limitColumn = limitColumn;
+        }
+
+        public int Column { get; set; }
+
+        public int Row { get; set; }
+
+        public void MoveDown()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Move()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MoveLeft()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MoveUp()
+        {
+            throw new NotImplementedException();
         }
     }
 }

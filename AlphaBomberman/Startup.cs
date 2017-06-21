@@ -6,7 +6,7 @@
     {
         static void Main()
         {
-            Game.RunHomeScreen(Game.HomeWidth, Game.HomeHeight);
+            Game.RunHomeScreen(GameSettings.HomeWidth, GameSettings.HomeHeight);
         }
     }
 }

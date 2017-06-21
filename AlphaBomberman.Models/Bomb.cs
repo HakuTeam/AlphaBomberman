@@ -22,7 +22,7 @@
             this.Range = range;
             this.Timer = new Stopwatch();
             this.Timer.Start();
-            this.Clock = 1500000; //miliseconds to boom
+            this.Clock = GameSettings.BombClock; //miliseconds to boom
             this._bombChar = GameChars.BombChar;
         }
 
@@ -173,7 +173,7 @@
                 Player.PlayerOneIsAlive = false;
             }
 
-           
+
 
             this.Level.Matrix[this.Row][this.Column] = GameChars.EmptySpace;
             Console.SetCursorPosition(this.Column, this.Row);
@@ -193,7 +193,7 @@
 
                 if (bomb.Timer.ElapsedMilliseconds >= bomb.Clock)
                 {
-                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"../../Sounds/Bomb1.wav");
+                    System.Media.SoundPlayer player = new System.Media.SoundPlayer(GameSettings.BombSound);
                     player.Play();
 
                     bomb.Explode();
