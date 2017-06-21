@@ -20,10 +20,33 @@
         private readonly StaticElement _menuFrame;
         public bool IsShown;
 
-        public Menu(int width, int height): base()
+        public ConsoleColor ColorBackground { get; set; }
+        public ConsoleColor ColorSelectedBackground { get; set; }
+        public ConsoleColor ColorForeground { get; set; }
+        public ConsoleColor ColorSelectedForeground { get; set; }
+
+        public ConsoleColor ColorFrame { get; set; }
+
+        public Menu(
+            int width, 
+            int height, 
+            ConsoleColor colorForeground = ConsoleColor.White,
+            ConsoleColor colorBackground = ConsoleColor.Black,
+            ConsoleColor colorFrame = ConsoleColor.Green,
+            ConsoleColor colorSelectedForeground = ConsoleColor.Black,
+            ConsoleColor colorSelectedBackground = ConsoleColor.Yellow
+            )
         {
             var frame = Composer.GetStringBox(width, height);
-            _menuFrame = new StaticElement(frame,ConsoleColor.Green);
+
+            ColorForeground = colorForeground;
+            ColorBackground = colorBackground;
+            ColorSelectedForeground = colorSelectedForeground;
+            ColorSelectedBackground = colorSelectedBackground;
+
+            ColorFrame = colorFrame;
+
+            _menuFrame = new StaticElement(frame, ColorFrame);
             IsShown = false;
         }
 
@@ -76,11 +99,11 @@
             {
                 if (i == _selected)
                 {
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ColorSelectedForeground;
+                    Console.BackgroundColor = ColorSelectedBackground;
                     Elements[i].Print();
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ColorForeground;
+                    Console.BackgroundColor = ColorBackground;
                 }
                 else
                 {

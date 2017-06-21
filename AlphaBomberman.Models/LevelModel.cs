@@ -48,6 +48,8 @@
                     }
                     else if (secondPlayerPositionUp || secondPlayerPositionleft || secondPlayerPosition)
                     {
+                        Console.ForegroundColor = GameColors.PlayerTwo;
+
                         matrix[matrix.Length - 2][matrix[matrix.Length - 2].Length - 2] = GameChars.PlayerTwoChar;
                         Console.SetCursorPosition(matrix[matrix.Length - 2].Length - 2, matrix.Length - 2);
                         Console.Write(GameChars.PlayerTwoChar);
@@ -59,9 +61,13 @@
                         matrix[matrix.Length - 3][matrix[matrix.Length - 2].Length - 2] = GameChars.EmptySpace;
                         Console.SetCursorPosition(matrix[matrix.Length - 2].Length - 2, matrix.Length - 3);
                         Console.Write(GameChars.EmptySpace);
+
+                        Game.RestConsoleColors();
                     }
                     else if (firstPlayerPosition || firstPlayerPositionDown || firstPlayerPositionRight)
                     {
+                        Console.ForegroundColor = GameColors.PlayerOne;
+
                         matrix[1][1] = GameChars.PlayerOneChar;
                         Console.SetCursorPosition(1, 1);
                         Console.Write(GameChars.PlayerOneChar);
@@ -73,6 +79,8 @@
                         matrix[2][1] = GameChars.EmptySpace;
                         Console.SetCursorPosition(2, 1);
                         Console.Write(GameChars.EmptySpace);
+
+                        Game.RestConsoleColors();
                     }
                     else
                     {

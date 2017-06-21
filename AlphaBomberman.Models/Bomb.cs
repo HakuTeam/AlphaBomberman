@@ -40,22 +40,14 @@
 
         public int Clock { get; set; }
 
-        public void Print()
+        public void Print(char showCharacter = GameChars.BombChar)
         {
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.BackgroundColor = GameColors.BombBackground;
+            Console.ForegroundColor = GameColors.BombForeground;
             this.Level.Matrix[Row][Column] = this._bombChar;
             Console.SetCursorPosition(this.Column, this.Row);
-            Console.WriteLine(this._bombChar);
+            Console.WriteLine(showCharacter);
             Game.RestConsoleColors();
-
-        }
-
-        public void PrintSet(char playerChar)
-        {
-            this._bombChar = playerChar;
-            this.Print();
-            this._bombChar = GameChars.BombChar;
         }
 
         public void Explode()

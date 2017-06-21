@@ -49,6 +49,7 @@
     <Compile Include="Bomb.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameChars.cs" />
+    <Compile Include="GameColors.cs" />
     <Compile Include="LevelModel.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

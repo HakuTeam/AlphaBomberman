@@ -20,7 +20,15 @@
             PrepareConsole();
 
             //create menu
-            var homeMenu = new Menu(width, height);
+            var homeMenu = new Menu(
+                width, 
+                height,
+                GameColors.DefaultForeground,
+                GameColors.DefaultBackground,
+                GameColors.MenuFrame,
+                GameColors.MenuSelectedForeground,
+                GameColors.MenuSelectedBackground
+                );
 
             //add menu items
             homeMenu.Add("START GAME", Command.StartGame);
@@ -258,15 +266,15 @@
 
         public static void PrintLevel(LevelModel level)
         {
-            var levelPrintable = Composer.Compose(level.Matrix);
+            string[] levelPrintable = Composer.Compose(level.Matrix);
             var levelState = new StaticElement(levelPrintable);
             levelState.Print();
         }
 
         public static void RestConsoleColors()
         {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = GameColors.DefaultBackground;
+            Console.ForegroundColor = GameColors.DefaultForeground;
         }
     }
 }

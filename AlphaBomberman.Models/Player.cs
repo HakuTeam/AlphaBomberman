@@ -106,11 +106,13 @@
         {
             var bomb = new Bomb(row, column, Level, 3);
             Bomb.Bombs.Add(bomb);
-            bomb.PrintSet(playerChar);
+            bomb.Print(playerChar);
         }
 
         private static void MoveRight(char[][] matrix, int row, int col, char playerChar)
         {
+            SetPlayerColor(playerChar);
+
             matrix[row][col] = GameChars.EmptySpace;
             Console.SetCursorPosition(col, row);
             Console.WriteLine(GameChars.EmptySpace);
@@ -122,6 +124,8 @@
 
         private static void MoveLeft(char[][] matrix, int row, int col, char playerChar)
         {
+            SetPlayerColor(playerChar);
+
             matrix[row][col] = GameChars.EmptySpace;
             Console.SetCursorPosition(col, row);
             Console.WriteLine(GameChars.EmptySpace);
@@ -133,6 +137,8 @@
 
         private static void MoveUp(char[][] matrix, int row, int col, char playerChar)
         {
+            SetPlayerColor(playerChar);
+
             matrix[row][col] = GameChars.EmptySpace;
             Console.SetCursorPosition(col, row);
             Console.WriteLine(GameChars.EmptySpace);
@@ -144,6 +150,8 @@
 
         private static void MoveDown(char[][] matrix, int row, int col, char playerChar)
         {
+            SetPlayerColor(playerChar);
+
             matrix[row][col] = GameChars.EmptySpace;
             Console.SetCursorPosition(col, row);
             Console.WriteLine(GameChars.EmptySpace);
@@ -151,6 +159,21 @@
             Console.SetCursorPosition(col, row);
             Console.Write(playerChar);
             matrix[row][col] = playerChar;
+
+            Game.RestConsoleColors();
+        }
+
+        public static void SetPlayerColor(char playerChar)
+        {
+            switch (playerChar)
+            {
+                case GameChars.PlayerOneChar:
+                    Console.ForegroundColor = GameColors.PlayerOne;
+                    break;
+                case GameChars.PlayerTwoChar:
+                    Console.ForegroundColor = GameColors.PlayerTwo;
+                    break;
+            }
         }
     }
 }
