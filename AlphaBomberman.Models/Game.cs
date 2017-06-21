@@ -14,10 +14,13 @@
 
         public static int GameWidth = 17;
         public static int GameHeight = 11;
+        public static System.Media.SoundPlayer music = new System.Media.SoundPlayer(@"../../Sounds/Home-screen.wav");
+       
 
         public static void RunHomeScreen(int width, int height)
         {
             PrepareConsole();
+            music.Play();
 
             //create menu
             var homeMenu = new Menu(
@@ -229,6 +232,7 @@
                         GameHeight = userIntInput;
                     }
 
+                    music.Stop();
                     Console.Clear();
                     var player = new Player(new LevelModel(GameWidth, GameHeight));
                     Player.PlayerOneIsAlive = true;
