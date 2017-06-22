@@ -14,6 +14,8 @@
         public static int GameWidth = GameSettings.GameWidthDefault;
         public static int GameHeight = GameSettings.GameHeightDefault;
         public static System.Media.SoundPlayer music = new System.Media.SoundPlayer(GameSettings.HomeMusic);
+        public static int MiddleRow;
+        public static int MiddleColumn;
 
 
         public static void RunHomeScreen(int width, int height)
@@ -21,10 +23,17 @@
             PrepareConsole();
             music.Play();
 
+            //Calculate screen position
+
+            int startRow = StartRow(height);
+            int startColumn = StartColumn(width);
+
             //create menu
             var homeMenu = new Menu(
                 width: width,
                 height: height,
+                row: startRow,
+                column: startColumn,
                 colorForeground: GameColors.DefaultForeground,
                 colorBackground: GameColors.DefaultBackground,
                 colorFrame: GameColors.MenuFrame,
@@ -33,8 +42,8 @@
                 );
 
             //add menu items
-            homeMenu.Add("START GAME", Command.StartGame);
-            homeMenu.Add("EXIT GAME", Command.Exit);
+            homeMenu.Add(startRow, startColumn, "START GAME", Command.StartGame);
+            homeMenu.Add(startRow, startColumn, "EXIT GAME", Command.Exit);
             homeMenu.Print();
 
 
@@ -62,11 +71,24 @@
             }
         }
 
+        private static int StartColumn(int width)
+        {
+            return MiddleColumn - (width / 2);
+        }
+
+        private static int StartRow(int height)
+        {
+            return MiddleRow - (height / 2);
+        }
+
         public static void GameOverScreen(int width, int height)
         {
-            var gameOverScreen = new Menu(width, height);
+            int startRow = StartRow(height);
+            int startColumn = StartColumn(width);
 
-            gameOverScreen.Add("Restart?", Command.HomeScreen);
+            var gameOverScreen = new Menu(startRow, startColumn, width, height);
+
+            gameOverScreen.Add(startRow, startColumn, "Restart?", Command.HomeScreen);
         }
 
         public static ConsoleKey Tick()
@@ -86,13 +108,21 @@
             return result;
         }
 
-        private static void ShowGameOverScreen(int homeWidth, int homeHeight)
+        private static void ShowGameOverScreen()
         {
-            var menu = new Menu(homeWidth, homeHeight);
+            int startRow = StartRow(GameSettings.HomeHeight);
+            int startColumn = StartColumn(GameSettings.HomeWidth);
 
-            menu.Add("Restart?", Command.HomeScreen);
+            var menu = new Menu(
+                width: GameSettings.HomeWidth,
+                height: GameSettings.HomeHeight,
+                row: startRow,
+                column: startColumn
+                );
+
+            menu.Add(startRow, startColumn, "Restart?", Command.HomeScreen);
             menu.Print();
-            PrintGameOverScreen();
+            PrintGameOverScreen(startColumn,startRow);
 
             while (menu.IsShown)
             {
@@ -109,10 +139,11 @@
             }
         }
 
-        private static void PrintGameOverScreen()
+        private static void PrintGameOverScreen(int leftOffset, int topOffset)
         {
             Console.WriteLine();
-            Console.SetCursorPosition(3, 3);
+            var left = 3 + leftOffset;
+            Console.SetCursorPosition(left, 3 + topOffset);
             if (Player.PlayerOneIsAlive)
             {
                 Console.WriteLine("P won the beer");
@@ -123,27 +154,45 @@
             }
 
             Console.WriteLine();
-            Console.SetCursorPosition(3, 4);
+            Console.SetCursorPosition(left, 4 + topOffset);
             Console.WriteLine("    oOOOOOo");
-            Console.SetCursorPosition(3, 5);
+            Console.SetCursorPosition(left, 5 + topOffset);
             Console.WriteLine("   ,|    oO");
-            Console.SetCursorPosition(3, 6);
+            Console.SetCursorPosition(left, 6 + topOffset);
             Console.WriteLine("  //|     |");
-            Console.SetCursorPosition(3, 7);
+            Console.SetCursorPosition(left, 7 + topOffset);
             Console.WriteLine("  \\\\|     |");
-            Console.SetCursorPosition(3, 8);
+            Console.SetCursorPosition(left, 8 + topOffset);
             Console.WriteLine("    `-----`");
         }
 
         public static void ShowExitMenu(int width, int height)
         {
+            PrepareConsole();
+            music.Play();
+
+            //Calculate screen position
+
+            int startRow = StartRow(height);
+            int startColumn = StartColumn(width);
+
+
             //create menu
-            var menu = new Menu(width, height);
+            var menu = new Menu(
+                width: width,
+                height: height,
+                row: startRow,
+                column: startColumn,
+                colorForeground: GameColors.DefaultForeground,
+                colorBackground: GameColors.DefaultBackground,
+                colorFrame: GameColors.MenuFrame,
+                colorSelectedForeground: GameColors.MenuSelectedForeground,
+                colorSelectedBackground: GameColors.MenuSelectedBackground);
 
             //add menu items
-            menu.Add("Resume Game", Command.ResumeGame);
-            menu.Add("Home Screen", Command.HomeScreen);
-            menu.Add("Exit Game", Command.Exit);
+            menu.Add(startRow,startColumn,"Resume Game", Command.ResumeGame);
+            menu.Add(startRow, startColumn, "Home Screen", Command.HomeScreen);
+            menu.Add(startRow, startColumn, "Exit Game", Command.Exit);
             menu.Print();
 
 
@@ -188,15 +237,21 @@
 
             Console.Clear();
             Console.SetCursorPosition(1, 1);
+
+            //Calculate the middle of the screen
+            MiddleRow = Console.BufferHeight / 2;
+            MiddleColumn = Console.BufferWidth / 2;
         }
 
         private static int GetUserIntInput(string message, int inputLength)
         {
-            int firstRow = GameSettings.HomeHeight / 2 - Input.Padding;
-            int firstColumn = 0;
+            int startRow = StartRow(GameSettings.HomeHeight);
+            int startColumn = StartColumn(GameSettings.HomeWidth);
+
+            int firstRow = startRow + GameSettings.HomeHeight / 2 - Input.Padding;
             int result;
 
-            Input inputAlert = new Input(firstRow, firstColumn, message, inputLength);
+            Input inputAlert = new Input(firstRow, startColumn, message, inputLength);
 
             inputAlert.Print();
             string uInput = Console.ReadLine();
@@ -270,7 +325,7 @@
                 case Command.GameOverScreen:
                     //end game clear then go to home screen
                     Console.Clear();
-                    ShowGameOverScreen(GameSettings.HomeWidth, GameSettings.HomeHeight);
+                    ShowGameOverScreen();
                     break;
                 case Command.ResumeGame:
                     //end game clear then go to home screen

@@ -30,6 +30,8 @@
         public Menu(
             int width, 
             int height, 
+            int row = 0,
+            int column = 0,
             ConsoleColor colorForeground = ConsoleColor.White,
             ConsoleColor colorBackground = ConsoleColor.Black,
             ConsoleColor colorFrame = ConsoleColor.Green,
@@ -46,13 +48,16 @@
 
             ColorFrame = colorFrame;
 
-            _menuFrame = new StaticElement(frame, ColorFrame);
+            _menuFrame = new StaticElement(frame, ColorFrame, row, column);
             IsShown = false;
         }
 
-        public void Add(int x, int y, string content, Command command)
+        public void Add(int row, int column, string content, Command command)
         {
-            var item = new MenuItem(x, y, content, command);
+            int currentRow = _menuFrame.Row + 2 + _elements.Count;
+            int currentColumn = _menuFrame.Column + _menuFrame.Width() / 2 - content.Length / 2;
+
+            var item = new MenuItem(currentRow, currentColumn, content, command);
             _elements.Add(item);
         }
 
